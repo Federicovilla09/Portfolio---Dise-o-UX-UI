@@ -1,0 +1,357 @@
+/* --- SECCIÓN: PROJECT HEADER (Figma 2170:1243 & 2170:1246) --- */
+
+.project-header {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 40px 0;
+}
+
+.project-header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 1. Categoría y Título */
+.label--secondary {
+  display: inline-flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  color: var(--color-text-primary);
+  font-size: 12px;
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: 32px;
+}
+
+.project-header__title {
+  font-size: 36px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-titles-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 48px 0;
+  max-width: 900px;
+}
+
+/* 2. Metadata (Fila con divisores horizontales) - Nodo 2170:1246 */
+.project-header__info {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 56px;
+  width: 100%;
+  margin-top: 48px;
+  padding: 20px 0;
+}
+
+/* Estructura de cada columna (Título arriba, Valor abajo) */
+.meta-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-label {
+  font-size: 12px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-titles-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.meta-value {
+  font-size: 18px;
+  font-weight: var(--weight-regular);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.meta-value--rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 40px;
+  background-color: var(--color-border);
+}
+
+/* Contenedor de Tags */
+.meta-tags {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tag-badge {
+  font-size: 12px;
+  font-weight: var(--weight-medium);
+  color: #666666;
+  border: 1px solid #D1D1D1;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+/* --- SECCIÓN: PROJECT VISUALS (Figma 2170:1257) --- */
+
+.project-visuals {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 40px 0;
+  margin-bottom: 64px;
+}
+
+.project-visuals__main {
+  max-width: auto;
+}
+
+.project-visuals__main img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* --- SECCIÓN: PROJECT CASE --- */
+
+.project-case {
+  background-color: var(--color-bg);
+}
+
+.project-case__container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.project-case__block {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+
+/* Título de la sección (ej: Contexto) */
+.section-title--small {
+  font-size: 24px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-titles-primary);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.2;
+}
+
+.project-case__text {
+  font-size: 18px;
+  font-weight: var(--weight-regular);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+/* Divisor horizontal */
+.case-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+  border: none;
+  margin-bottom: 48px;
+}
+
+/* --- CONTENEDOR PADRE --- */
+.work-schedule {
+  background-color: #ffffff;
+}
+
+.work-schedule__container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.work-schedule__title {
+  font-size: 24px;
+  font-weight: var(--weight-semibold);
+  margin-bottom: 32px;
+  color: var(--color-titles-primary);
+}
+
+/* --- SECCIÓN CRONOGRAMA DE TRABAJO --- */
+
+.project-schedule {
+  background-color: var(--color-bg);
+}
+
+.project-schedule__container {
+  max-width: 1120px;
+  margin: 0 auto;
+  margin-bottom: 64px;
+}
+
+/* Título de la sección alineado con el sistema */
+.project-schedule .section-title--small {
+  margin-bottom: 64px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+/* --- ESTRUCTURA GANTT --- */
+.gantt {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 24px;
+}
+
+.gantt__labels {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 150px;
+}
+
+.gantt__label {
+  height: 28px;
+  display: flex;
+  color: #B2B2B2;
+  font-size: 16px;
+  font-weight: var(--weight-regular);
+}
+
+.gantt__content {
+  position: relative;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.section-divider__line1 {
+  width: 1px;
+  height: 100px;
+  background-color: #000;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+/* Capa de líneas verticales (12 semanas) 
+.gantt__grid {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  pointer-events: none;
+}
+
+.gantt__grid span {
+  border-right: 1px dashed #D1D1D1;
+  height: 100%;
+}
+  */
+
+
+
+/* Contenedor de barras con control de filas */
+.gantt__bars {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 64px);
+  /* Sincronizado con .gantt__label */
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.gantt__bar {
+  background-color: #2B2B2B;
+  color: #FFFFFF;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: var(--weight-regular);
+  white-space: nowrap;
+  margin-right: -1px;
+  min-width: 112px;
+}
+
+/* --- SECCIÓN: CTA FINAL (Figma 2370:661) --- */
+
+.cta-project {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px 40px;
+  background-color: var(--color-bg-alt);
+  text-align: center;
+  border-radius: 24px;
+}
+
+.cta-project__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.cta-project__title {
+  font-size: 32px;
+  font-weight: var(--weight-medium);
+  color: var(--color-titles-primary);
+  line-height: 1.4;
+  max-width: 800px;
+  margin: 0;
+}
+
+.cta-project__actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilo del Botón Secundario con Icono */
+.btn--secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background-color: transparent;
+  color: var(--color-titles-primary);
+  border: 1px solid var(--color-titles-primary);
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efecto Hover para interactividad profesional */
+.btn--secondary:hover {
+  background-color: var(--color-titles-primary);
+  color: #FFFFFF;
+}
+
+/* Preparación para el icono de Figma */
+.icon-figma {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Cuando tengas el SVG o fuente de iconos, se verá aquí */
+}

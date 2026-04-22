@@ -1,0 +1,439 @@
+/* --- COMPONENTE: NAVBAR --- */
+
+.navbar {
+    width: 100%;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    top: 0;
+    position: sticky;
+    z-index: 9999;
+}
+
+.navbar__container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto; 
+}
+
+.navbar__logo {
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+    color: var(--color-titles-primary);
+    letter-spacing: var(--letter-spacing);
+}
+
+/* Navegación de retorno (Navbar Secundario) */
+.navbar__back .back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    transition: color 0.3s ease;
+}
+
+.navbar__back .back-link:hover {
+    color: var(--color-titles-primary);
+}
+
+.navbar__back .back-link i {
+    font-size: 18px; /* Tamaño para el icono de flecha */
+}
+
+/* --- LINEA DE DIVISIÓN (SISTEMA BASE) --- */
+
+.divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: var(--color-border);
+}
+
+.divider--light {
+    background-color: var(--color-text-secondary);
+}
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin: 60px 0 32px;
+}
+
+.section-divider__text {
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    white-space: nowrap;
+}
+
+.section-divider__line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--color-border);
+}
+
+/* --- BOTÓN PRIMARIO --- */
+
+.btn--primary {
+    display: flex;
+    height: 56px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--color-dark);
+    color: var(--color-text-secondary);
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: fit-content;
+}
+
+.btn--primary:hover {
+    background-color: var(--color-bg-alt);
+    color: var(--color-dark);
+    transform: translateY(-2px);
+}
+
+.btn--primary:active {
+    transform: translateY(0);
+}
+
+/* --- BOTÓN SECUNDARIO --- */
+
+.btn--secondary {
+    display: flex;
+    height: 56px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background-color: transparent;
+    color: var(--color-dark);
+    border: 1px solid var(--color-dark);
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.btn--secondary:hover {
+    background-color: var(--color-dark);
+    color: var(--color-text-secondary);
+    transform: translateY(-2px);
+}
+
+.btn--secondary:active {
+    transform: translateY(0);
+}
+
+/* --- COMPONENTE: PROJECT CARD --- */
+
+.project-card {
+    width: 357px;
+    background-color: var(--color-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del Proyecto */
+.project-card__image img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 10;
+}
+
+/* Contenedor de Información */
+.project-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+}
+
+/* Tag superior (Ej: APLICACIÓN WEB) */
+.project-card__tag {
+    display: block;
+    color: var(--color-text-primary); /* Gris suave según variable */
+    font-size: 12px;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+}
+
+.project__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+/* Título del Proyecto */
+.project-card__name {
+    color: var(--color-text-secondary); /* Blanco según variable */
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+}
+
+/* Descripción */
+.project-card__text {
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-secondary);
+}
+
+/* Meta: Valoraciones */
+.project-card__meta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--color-text-secondary);
+}
+
+.project-card__meta .likes{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-card__rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+}
+
+/* Lista de Labels (Metodologías/Tech) */
+.project-card__labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Estilo para las etiquetas individuales */
+.project-card__labels .label {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text-secondary);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+}
+
+.hero__badge {
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 8px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+}
+
+/* Botón Ver Caso (Basado en color-bg-alt para contraste) */
+.link-caso {
+    align-self: flex-end; 
+    display: flex;
+    height: 40px;
+    padding: 10px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 100px;
+    background-color: var(--color-bg-alt);
+    color: var(--color-titles-primary);
+    font-size: 12px;
+    font-weight: var(--weight-regular);
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+}
+
+.link-caso:hover {
+    opacity: 0.9;
+}
+
+/* --- COMPONENTE: FILTER BADGE (Categorías) --- */
+
+.projects-filter__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 32px 0;
+}
+
+.filter-btn {
+    display: inline-flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    color: var(--color-text-primary);
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--letter-spacing);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Estado Hover */
+.filter-btn:hover {
+    color: var(--color-titles-primary);
+    background-color: rgba(26, 26, 26, 0.03); /* Un toque muy sutil */
+}
+
+/* Estado Activo (Seleccionado) */
+.filter-btn--active {
+    background-color: var(--color-bg-alt); /* Color beige de tu paleta */
+    border-color: var(--color-bg-alt);
+    color: var(--color-titles-primary);
+    font-weight: var(--weight-semibold);
+}
+
+.filter-btn--active {
+    background-color: var(--color-bg-alt);
+    border-color: var(--color-dark);
+    color: var(--color-text-secondary);
+}
+
+/* --- COMPONENTE: FOOTER --- */
+
+.footer {
+    background-color: var(--color-bg-alt);
+    padding: 80px 40px;
+}
+
+.footer__container {
+    max-width: 1200px; /* Ajustar según tu layout general */
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Distribución de las 3 columnas */
+.footer__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap; /* Responsive: se apilan en móviles */
+    margin-bottom: 60px;
+}
+
+/* Columna de Marca/Nombre */
+.footer__brand p:first-child {
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+    color: var(--color-titles-primary);
+    margin-bottom: 16px;
+}
+
+.footer__brand p:last-child {
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+}
+
+/* Títulos de las columnas (Navegación / Contactos) */
+.footer__title {
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-titles-primary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    margin-bottom: 16px;
+}
+
+/* Listas de enlaces */
+.footer__list {
+    list-style: none;
+}
+
+.footer__list li {
+    margin-bottom: 16px;
+}
+
+.footer__list a {
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+.footer__list a:hover {
+    color: var(--color-titles-primary);
+}
+
+/* Parte inferior: Línea y Copyright */
+.footer__bottom {
+    text-align: center;
+}
+
+.footer__line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+    margin-bottom: 32px;
+}
+
+.footer__bottom p {
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    opacity: 0.8;
+}
+
+/* Iconos (Si usas una fuente de iconos o SVGs) */
+.footer__list i {
+    font-size: 16px;
+    width: 20px; /* Ancho fijo para alinear el texto de los links */
+    text-align: center;
+}

@@ -1,0 +1,777 @@
+/* --- SECCIÓN HERO --- */
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 64px;
+    align-self: stretch;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 80px 176px 80px;
+    background-image: url('../assets/Image/background\ hero.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+}
+
+.hero__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.hero__label {
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+}
+
+.hero__title {
+    font-size: 56px;
+    font-weight: var(--weight-bold);
+    color: var(--color-titles-primary);
+    max-width: 900px;
+}
+
+.hero__subtitle {
+    font-size: 18px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    max-width: 900px;
+}
+
+.hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    flex-wrap: wrap;
+}
+
+.hero__projects {
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+}
+
+/* --- SECCIÓN: PROYECTOS DESTACADOS --- */
+
+.projects {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 80px 176px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-titles-primary);
+    width: 100%;
+}
+
+.section-description {
+    font-size: 18px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    width: 100%;
+    margin-bottom: 64px;
+}
+
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(357px, 1fr));
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 64px;
+}
+
+.mobile-only-component {
+    display: none;
+}
+
+
+.projects__footer {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+}
+
+.projects__all-link {
+    font-size: 18px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.projects__all-link:hover {
+    color: var(--color-titles-primary);
+    border-bottom: 2px solid var(--color-text-primary);
+    border-color: var(--color-titles-primary);
+}
+
+.projects__all-link i {
+    font-size: 18px;
+}
+
+/* --- SECCIÓN: SERVICIOS --- */
+
+.services {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 80px 176px;
+}
+
+.services__grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 48px;
+}
+
+.service-item {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px;
+    align-items: flex-start;
+    gap: 16px;
+    justify-self: stretch;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    max-width: 536px;
+    overflow: hidden;
+}
+
+.info-card__graph {
+    position: absolute;
+    top: 0px;
+    right: -32px;
+    width: 100px;
+    height: 72px;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.info-card__graph img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Asegura que la imagen mantenga su proporción */
+}
+
+.service-item__title {
+    color: var(--color-titles-primary);
+    font-size: 18px;
+    font-weight: var(--weight-medium);
+    line-height: var(--line-height-titles);
+    letter-spacing: var(--letter-spacing);
+}
+
+.service-item__text {
+    color: var(--color-text-primary);
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    line-height: var(--line-height-body);
+}
+
+/* --- SECCIÓN: SOBRE MÍ --- */
+
+.about {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 80px 176px;
+}
+
+.about__container {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.about_titles-paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 548px;
+}
+
+.about__title {
+    font-size: 36px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-titles-primary);
+}
+
+.about_paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.about_paragraph p {
+    font-size: 18px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-body);
+
+}
+
+.titles-paragraphs__content p strong {
+    color: var(--color-titles-primary);
+    font-weight: var(--weight-semibold);
+    font-size: 16px;
+}
+
+.about__image {
+    width: 492px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.about__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* --- SECCIÓN: PROCESO DE TRABAJO --- */
+
+.process {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 80px 176px;
+}
+
+.process__list {
+    list-style: none;
+    padding: 0;
+    margin: 64px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.process__list::before {
+    content: '';
+    position: absolute;
+    left: 35px;
+    top: 0;
+    height: calc(100% - 68px);
+    width: 1px;
+    background-color: var(--color-border);
+    z-index: 1;
+}
+
+.process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 2;
+}
+
+.process-step:last-child {
+    margin-bottom: 0;
+}
+
+.process-step__number {
+    width: 72px;
+    height: 72px;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+.process-step__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 8px;
+}
+
+.process-step__title {
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-titles-primary);
+    letter-spacing: var(--letter-spacing);
+}
+
+.process-step__text {
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    max-width: 600px;
+    line-height: var(--line-height-body);
+}
+
+/* --- SECCIÓN: CTA FINAL --- */
+
+.cta-final {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 104px 0 104px 0;
+    background-color: var(--color-bg-alt);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 64px;
+    margin-bottom: 128px;
+}
+
+.cta-final__title {
+    font-size: 48px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-titles-primary);
+    max-width: auto;
+    line-height: var(--line-height-titles);
+}
+
+.cta-final__text {
+    font-size: 20px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    max-width: auto;
+    line-height: var(--line-height-body);
+}
+
+.cta-final__actions {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+}
+
+.cta-final__note {
+    font-size: 16px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    letter-spacing: var(--letter-spacing);
+    opacity: 0.7;
+}
+
+/* --- TABLET BREAKPOINT (Max 744px) --- */
+@media (max-width: 744px) {
+
+
+    .navbar {
+        padding: 48px;
+    }
+
+    .hero {
+        padding: 80px 48px 128px 48px;
+        gap: 80px;
+    }
+
+    h1,
+    .hero__title {
+        font-size: 40px;
+    }
+
+    .hero__subtitle {
+        font-size: 16px;
+    }
+
+    .hero__actions {
+        display: flex;
+        width: 100%;
+        gap: 64px;
+        box-sizing: border-box;
+    }
+
+    .btn--primary,
+    .btn--secondary {
+        flex: 1;
+    }
+
+    .projects {
+        padding: 0 48px 128px 48px;
+    }
+
+    /* 3. Grid de Proyectos: Mantenemos 2 columnas pero ajustamos el gap */
+    h2 {
+        font-size: 32px;
+    }
+
+    .section-description {
+        font-size: 16px;
+    }
+
+    .projects__grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 40px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .projects__grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .project-card {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+    }
+
+    .mobile-only-component {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 16px;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .mobile-only-component .dot.active {
+        width: 24px;
+        border-radius: 999px;
+        background-color: #4B5563;
+    }
+
+    .mobile-only-component .dot {
+        width: 10px;
+        height: 10px;
+        background-color: #D1D5DB;
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .services {
+        padding: 0 48px 128px 48px;
+    }
+
+    .service-item {
+        max-width: 100%;
+    }
+
+    .about {
+        padding: 0 48px 128px 48px;
+    }
+
+    .about__container {
+        flex-direction: row;
+        gap: 32px;
+    }
+
+    .about_paragraph {
+        font-size: 16px;
+        max-width: 364px;
+    }
+
+    .about__image {
+        width: 252px;
+        height: 252px;
+        object-fit: cover;
+        margin-top: 78px;
+    }
+
+    .about__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .process {
+        padding: 0 48px 128px 48px;
+    }
+
+    .cta-final {
+        border-radius: 0;
+        padding: 104px 48px;
+    }
+
+    .cta-final__title {
+        font-size: 32px;
+    }
+
+    .cta-final__text {
+        font-size: 18px;
+    }
+
+    .cta-final__actions {
+        width: 100%;
+        gap: 64px;
+    }
+
+    .cta-final__note {
+        font-size: 14px;
+    }
+
+    .footer {
+        padding: 0;
+    }
+
+    .footer__container {
+        padding: 48px;
+    }
+
+    .footer__top {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+    }
+}
+
+/* --- Breakpoint Premium: 394px a 500px --- 
+   Aquí damos un poco más de aire al diseño, aprovechando
+   que el dispositivo tiene más pantalla. */
+
+@media (min-width: 391px) and (max-width: 500px) {
+
+    .navbar {
+        padding: 48px 24px;
+    }
+
+    .hero__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .hero, 
+    .projects, 
+    .services, 
+    .about, 
+    .process, 
+    .cta-final, 
+    .footer__container {
+        padding: 80px 24px;
+    }
+
+    .section-divider {
+        margin-bottom: 80px;
+    }
+
+    .hero__title {
+        font-size: 36px;
+    }
+
+    .hero__actions,
+    .cta-final__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        box-sizing: border-box;
+    }
+
+    .btn--primary,
+    .btn--secondary {
+        width: 100%;
+    }
+
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .projects__grid {
+        padding-left: 0;
+        padding-right: 0;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .project-card {
+        flex: 0 0 100%;
+    }
+
+    .mobile-only-component {
+        margin-bottom: 40px;
+    }
+
+    .about__container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .about_titles-paragraphs {
+        margin-bottom: 40px;
+    }
+
+    .about__image {
+        margin-top: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .cta-final__title span {
+        display: block;
+    }
+}
+
+
+@media (max-width: 390px) {
+
+    .navbar {
+        padding: 48px 16px;
+    }
+
+    .hero {
+        padding: 64px 16px;
+        gap: 80px;
+        background-position: 86% center;
+        background-repeat: no-repeat;
+    }
+
+    .hero__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .hero__title {
+        font-size: 32px;
+    }
+
+    .hero__actions {
+        gap: 24px;
+    }
+
+    .projects {
+        padding: 40px 16px 176px 16px;
+    }
+
+    .section-divider {
+        margin-bottom: 80px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .projects__grid {
+        padding-left: 0;
+        padding-right: 0;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .project-card {
+        flex: 0 0 100%;
+    }
+
+    .mobile-only-component {
+        margin-bottom: 40px;
+    }
+
+    .projects__footer {
+        margin-top: 0;
+    }
+
+    .projects__all-link {
+        font-size: 16px;
+        gap: 12px;
+    }
+
+    .services {
+        padding: 0 16px 176px 16px;
+    }
+
+    .section-description {
+        margin-bottom: 80px;
+    }
+
+    .service-item {
+        min-height: 142px;
+        overflow: hidden;
+    }
+
+    .service-item__title {
+        font-size: 16px;
+    }
+
+    .service-item__text {
+        font-size: 12px;
+    }
+
+    .about {
+        padding: 0 16px 176px 16px;
+    }
+
+    .about__container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .about_titles-paragraphs {
+        margin-bottom: 40px;
+    }
+
+    .about__image {
+        margin-top: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .process {
+        padding: 0 16px 176px 16px;
+    }
+
+    .process-step {
+        gap: 16px;
+    }
+
+    .cta-final {
+        padding: 48px 16px;
+    }
+
+    .cta-final__title {
+        font-size: 28px;
+    }
+
+    .cta-final__title span {
+        display: block;
+    }
+
+    .cta-final__text {
+        font-size: 16px;
+    }
+
+    .cta-final__text span {
+        display: block;
+    }
+
+    .cta-final__actions {
+        gap: 24px;
+    }
+
+    .cta-final__note {
+        font-size: 12px;
+    }
+
+    .footer__container {
+        padding: 48px 16px;
+    }
+
+}

@@ -1,0 +1,54 @@
+:root {
+    /* Paleta de Colores */
+    --color-bg: #FFFFFF;
+    --color-bg-alt: #ebe5e3;
+    --color-titles-primary: #1A1A1A;
+    --color-titles-secondary: #ebdfd9;
+    --color-dark: #1C1C1C;
+    --color-text-primary: #666666;
+    --color-text-secondary: #ffffff;
+    --color-border: #E0E0E0;
+
+    /* Pesos de Tipografía (Raleway) */
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* Ajustes de Texto Globales */
+    --letter-spacing: 0.60px;
+    --line-height-titles: 1.24; /* 124% */
+    --line-height-body: 1.50;   /* 150% */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: var(--color-bg);
+}
+
+.titles-paragraphs__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Aplicación de line-height según reglas */
+h1, h2, h3, h4, h5, h6 {
+    line-height: var(--line-height-titles);
+    letter-spacing: var(--letter-spacing);
+}
+
+p {
+    line-height: var(--line-height-body);
+    letter-spacing: var(--letter-spacing);
+}
+
+a {
+    text-decoration: none;
+}
