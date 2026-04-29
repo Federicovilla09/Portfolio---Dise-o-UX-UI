@@ -1,65 +1,78 @@
 // Función para realizar la transición hacia adelante
 function navigateTo(url) {
-    // Creamos un overlay o usamos el contenedor de la nueva página
     const transitionLayer = document.createElement('div');
     transitionLayer.classList.add('page-transition');
     document.body.appendChild(transitionLayer);
 
-    // Pequeño delay para que el navegador registre el estado inicial antes de animar
     setTimeout(() => {
         transitionLayer.classList.add('page-transition--active');
     }, 10);
 
-    // Esperamos a que termine la animación para cambiar de URL
     setTimeout(() => {
         window.location.href = url;
     }, 600);
 }
 
-// Interceptar clics en enlaces internos
+// Interceptar clics en enlaces internos (excluyendo target=_blank, mailto, tel y anchors)
 document.addEventListener('click', (e) => {
     const link = e.target.closest('a');
-    if (link && link.href.includes(window.location.origin) && !link.hash) {
+    if (!link) return;
+
+    const isInternal = link.href.includes(window.location.origin);
+    const opensNewTab = link.target === '_blank';
+    const isAnchor = link.hash && link.pathname === window.location.pathname;
+    const isSpecialScheme = /^(mailto:|tel:|javascript:)/i.test(link.getAttribute('href') || '');
+
+    if (isInternal && !opensNewTab && !isAnchor && !isSpecialScheme) {
         e.preventDefault();
         navigateTo(link.href);
     }
 });
 
-// Manejar el botón "Atrás" del navegador
+// Animación de salida al usar el botón "Atrás" del navegador.
+// No llamamos a history.back() aquí: popstate ya implica que el navegador navegó.
 window.addEventListener('popstate', () => {
-    // Aquí podemos aplicar una animación de salida a la página actual
     document.body.classList.add('page-exit');
-    
-    // Dejamos que el navegador haga el back después de la animación
-    setTimeout(() => {
-        history.back();
-    }, 600);
 });
 
+// Indicador de dot activo según la card visible (solo home)
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".project-card");
     const dots = document.querySelectorAll(".dot");
-    const track = document.querySelector(".dot.active");
 
-    const observerOptions = {
-        root: null, // Usamos la ventana completa
-        threshold: 0.5 // 50% de visibilidad
-    };
+    if (!cards.length || !dots.length) return;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            // --- AQUÍ ESTÁ EL TRUCO PARA DEBUGEAR ---
-            console.log(`Card ${entry.target.getAttribute('data-index')} visible:`, entry.isIntersecting, entry.intersectionRatio);
-            
             if (entry.isIntersecting) {
                 const index = entry.target.getAttribute("data-index");
                 dots.forEach(d => d.classList.remove('active'));
-                if(dots[index]) {
+                if (dots[index]) {
                     dots[index].classList.add('active');
                 }
             }
         });
-    }, observerOptions);
+    }, { root: null, threshold: 0.5 });
 
     cards.forEach((card) => observer.observe(card));
+});
+
+// Toggle "Ver más / Ver menos" (solo página de archivo de proyectos)
+document.addEventListener("DOMContentLoaded", () => {
+    const btnVerMas = document.getElementById('btnVerMas');
+    const proyectosOcultos = document.getElementById('proyectosOcultos');
+
+    if (!btnVerMas || !proyectosOcultos) return;
+
+    const textoBoton = btnVerMas.querySelector('.btn-fantasma__texto');
+
+    btnVerMas.addEventListener('click', () => {
+        proyectosOcultos.classList.toggle('is-active');
+
+        if (textoBoton) {
+            textoBoton.textContent = proyectosOcultos.classList.contains('is-active')
+                ? 'VER MENOS'
+                : 'VER MÁS';
+        }
+    });
 });

@@ -1,24 +1,91 @@
 :root {
-    /* Paleta de Colores */
-    --color-bg: #FFFFFF;
-    --color-bg-alt: #ebe5e3;
-    --color-titles-primary: #1A1A1A;
-    --color-titles-secondary: #ebdfd9;
-    --color-dark: #1C1C1C;
-    --color-text-primary: #666666;
-    --color-text-secondary: #ffffff;
-    --color-border: #E0E0E0;
-
-    /* Pesos de Tipografía (Raleway) */
+    /* ============================================================
+       TYPOGRAPHY (Raleway)
+       Pesos de tipografía base del sistema.
+       ============================================================ */
     --weight-regular: 400;
     --weight-medium: 500;
     --weight-semibold: 600;
     --weight-bold: 700;
 
-    /* Ajustes de Texto Globales */
+    /* ============================================================
+       TEXT GLOBAL SETTINGS
+       Ajustes globales de texto aplicados desde body / headings.
+       ============================================================ */
     --letter-spacing: 0.60px;
     --line-height-titles: 1.24; /* 124% */
     --line-height-body: 1.50;   /* 150% */
+
+    /* ============================================================
+       COLORS
+       Paleta oficial del Design System.
+       ============================================================ */
+
+    /* --- Primary --- */
+    --color-primary-50:  #EAF5FF;
+    --color-primary-100: #CFE7FF;
+    --color-primary-200: #AAD5FF;
+    --color-primary-300: #6FBCFF;
+    --color-primary-400: #2C98FF;
+    --color-primary-500: #0071FF;
+    --color-primary-600: #0060FF;
+    --color-primary-700: #0053FF;
+    --color-primary-800: #0043E0;
+    --color-primary-900: #0038AE;
+    --color-primary-950: #021A54;
+
+    /* --- Text --- */
+    --color-text-50:  #F8FAFC;
+    --color-text-100: #E2E8F0;
+    --color-text-200: #64748B;
+    --color-text-300: #334155;
+    --color-text-400: #0B1220;
+
+    /* --- Surface --- */
+    --color-surface-0:   #FFFFFF;
+    --color-surface-50:  #F8FAFC;
+    --color-surface-100: #F1F5F9;
+    --color-surface-200: #E2E8F0;
+    --color-surface-300: #94A3B8;
+
+    /* --- Border --- */
+    --color-border-100: #E2E8F0;
+    --color-border-200: #CBD5E1;
+    --color-border-300: #94A3B8;
+    --color-border-400: #0038AE;
+
+    /* --- Dark --- */
+    --color-dark-soft:  #0A2A7A;
+    /* ============================================================
+       SPECIAL COLORS
+       Acentos puntuales fuera de la paleta principal
+       (badges destacados, highlights, estados especiales).
+       ============================================================ */
+    --color-special-badge: #F8FF2B;
+
+    /* ============================================================
+       GRADIENT REFERENCES
+       Tokens base reutilizables. No se exponen como linear-gradient
+       directo para preservar flexibilidad de ángulo y stops por uso.
+       Aplicar con:
+         background: linear-gradient(
+           180deg,
+           var(--gradient-dark-start) 40%,
+           var(--gradient-dark-end)   90%
+         );
+       Uso previsto: hero sections, CTA blocks, footer, fondos
+       destacados.
+       ============================================================ */
+
+    /* Gradient 01 — Dark
+       40% → Text / 400 · 90% → Primary / 950 */
+    --gradient-dark-start: var(--color-text-400);
+    --gradient-dark-end:   var(--color-primary-950);
+
+    /* Gradient 02 — Success
+       0% → #1FAF38 · 100% → #60D669 */
+    --gradient-success-start: #1FAF38;
+    --gradient-success-end:   #60D669;
 }
 
 * {
@@ -29,7 +96,7 @@
 
 body {
     font-family: 'Raleway', sans-serif;
-    background-color: var(--color-bg);
+    background-color: var(--color-surface-0);
 }
 
 .titles-paragraphs__content {

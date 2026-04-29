@@ -1,9 +1,9 @@
 /* --- SECCIÓN: PROJECT HEADER (Figma 2170:1243 & 2170:1246) --- */
 
 .project-header {
-  max-width: 1280px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 80px 40px 0;
+  margin-top: 80px;
 }
 
 .project-header__container {
@@ -19,9 +19,9 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-100);
   border-radius: 100px;
-  color: var(--color-text-primary);
+  color: var(--color-text-200);
   font-size: 12px;
   font-weight: var(--weight-medium);
   letter-spacing: var(--letter-spacing);
@@ -31,11 +31,10 @@
 .project-header__title {
   font-size: 36px;
   font-weight: var(--weight-semibold);
-  color: var(--color-titles-primary);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0 0 48px 0;
-  max-width: 900px;
+  color: var(--color-text-400);
+  line-height: var(--line-height-titles);
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: 64px;
 }
 
 /* 2. Metadata (Fila con divisores horizontales) - Nodo 2170:1246 */
@@ -45,8 +44,7 @@
   justify-content: left;
   gap: 56px;
   width: 100%;
-  margin-top: 48px;
-  padding: 20px 0;
+  margin-bottom: 64px;
 }
 
 /* Estructura de cada columna (Título arriba, Valor abajo) */
@@ -59,7 +57,7 @@
 .meta-label {
   font-size: 12px;
   font-weight: var(--weight-semibold);
-  color: var(--color-titles-primary);
+  color: var(--color-text-400);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -67,7 +65,7 @@
 .meta-value {
   font-size: 18px;
   font-weight: var(--weight-regular);
-  color: var(--color-text-primary);
+  color: var(--color-text-200);
   white-space: nowrap;
 }
 
@@ -80,7 +78,7 @@
 .meta-divider {
   width: 1px;
   height: 40px;
-  background-color: var(--color-border);
+  background-color: var(--color-border-100);
 }
 
 /* Contenedor de Tags */
@@ -100,25 +98,24 @@
   text-transform: uppercase;
 }
 
-/* --- SECCIÓN: PROJECT VISUALS (Figma 2170:1257) --- */
+/* --- SECCIÓN: PROJECT VISUALS --- */
 
 .project-visuals {
-  max-width: 1280px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 80px 40px 0;
   margin-bottom: 64px;
 }
 
 .project-visuals__main {
-  max-width: auto;
+ height: 420px;
 }
 
 .project-visuals__main img {
   width: 100%;
-  height: auto;
+  height: 420px;
   display: block;
   border-radius: 24px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-100);
   aspect-ratio: 16 / 9;
   object-fit: cover;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
@@ -126,13 +123,37 @@
 
 /* --- SECCIÓN: PROJECT CASE --- */
 
-.project-case {
-  background-color: var(--color-bg);
-}
-
 .project-case__container {
   max-width: 1120px;
   margin: 0 auto;
+  padding: 0 48px;
+}
+
+.project-rating__container {
+  margin-bottom: 48px;
+}
+
+.project-rating__title {
+  font-size: 24px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-400);
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: 32px;
+}
+
+.btn-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background-color: transparent;
+  color: var(--color-text-200);
+  border: 1px solid var(--color-border-100);
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: var(--weight-regular);
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .project-case__block {
@@ -147,7 +168,7 @@
 .section-title--small {
   font-size: 24px;
   font-weight: var(--weight-semibold);
-  color: var(--color-titles-primary);
+  color: var(--color-text-400);
   letter-spacing: var(--letter-spacing);
   line-height: 1.2;
 }
@@ -155,7 +176,7 @@
 .project-case__text {
   font-size: 18px;
   font-weight: var(--weight-regular);
-  color: var(--color-text-primary);
+  color: var(--color-text-200);
   line-height: 1.6;
 }
 
@@ -163,7 +184,7 @@
 .case-divider {
   width: 100%;
   height: 1px;
-  background-color: var(--color-border);
+  background-color: var(--color-border-100);
   border: none;
   margin-bottom: 48px;
 }
@@ -183,121 +204,139 @@
   font-size: 24px;
   font-weight: var(--weight-semibold);
   margin-bottom: 32px;
-  color: var(--color-titles-primary);
+  color: var(--color-text-400);
 }
 
 /* --- SECCIÓN CRONOGRAMA DE TRABAJO --- */
 
 .project-schedule {
-  background-color: var(--color-bg);
+  --gantt-row-height: 56px;
+  --gantt-label-width: 180px;
+  --gantt-bar-color: #5DACE5;
+  --gantt-axis-color: var(--color-text-400);
+  --gantt-grid-color: #E0E0E0;
 }
 
 .project-schedule__container {
   max-width: 1120px;
   margin: 0 auto;
   margin-bottom: 64px;
+  padding: 0 48px;
 }
 
-/* Título de la sección alineado con el sistema */
 .project-schedule .section-title--small {
-  margin-bottom: 64px;
-  font-size: 32px;
-  font-weight: 500;
+  margin-bottom: 48px;
+  font-size: 24px;
+  font-weight: var(--weight-semibold);
 }
 
 /* --- ESTRUCTURA GANTT --- */
 .gantt {
-  display: flex;
-  flex-direction: row;
-  align-items: start;
+  display: grid;
+  grid-template-columns: var(--gantt-label-width) 1fr;
   gap: 24px;
+  align-items: stretch;
 }
 
 .gantt__labels {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  min-width: 150px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: repeat(6, var(--gantt-row-height));
+  align-items: center;
 }
 
 .gantt__label {
-  height: 28px;
-  display: flex;
-  color: #B2B2B2;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: var(--weight-regular);
+  color: var(--color-text-200);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.3;
 }
 
-.gantt__content {
+/* Área del chart con eje en L (izquierda + inferior) */
+.gantt__chart {
   position: relative;
-  border-left: 2px solid #000;
-  border-bottom: 2px solid #000;
+  border-left: 1.5px solid var(--gantt-axis-color);
+  border-bottom: 1.5px solid var(--gantt-axis-color);
 }
 
-.section-divider__line1 {
-  width: 1px;
-  height: 100px;
-  background-color: #000;
-  display: inline-block;
-  margin: 0 20px;
-}
-
-/* Capa de líneas verticales (12 semanas) 
+/* Líneas verticales dashed por semana */
 .gantt__grid {
   position: absolute;
-  top: 0;
-  left: -1px;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   pointer-events: none;
 }
 
 .gantt__grid span {
-  border-right: 1px dashed #D1D1D1;
-  height: 100%;
+  border-right: 1px dashed var(--gantt-grid-color);
 }
-  */
 
+.gantt__grid span:last-child {
+  border-right: none;
+}
 
-
-/* Contenedor de barras con control de filas */
+/* Grid de barras: 12 semanas × 6 etapas */
 .gantt__bars {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(6, 64px);
-  /* Sincronizado con .gantt__label */
+  grid-template-rows: repeat(6, var(--gantt-row-height));
   align-items: center;
-  position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .gantt__bar {
-  background-color: #2B2B2B;
+  background-color: var(--gantt-bar-color);
   color: #FFFFFF;
-  height: 28px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  padding: 8px;
+  border-radius: 999px;
+  padding: 0 16px;
   font-size: 12px;
-  font-weight: var(--weight-regular);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.02em;
   white-space: nowrap;
-  margin-right: -1px;
-  min-width: 112px;
+}
+
+.feedback-link {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 64px;
+}
+
+.btn-link-external {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-link-external__text {
+  font-size: 18px;
+  font-weight: var(--weight-regular);
+  color: var(--color-text-400);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 /* --- SECCIÓN: CTA FINAL (Figma 2370:661) --- */
 
 .cta-project {
-  max-width: 1280px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 120px 40px;
-  background-color: var(--color-bg-alt);
+  background-color: var(--color-surface-100);
   text-align: center;
   border-radius: 24px;
+  margin-bottom: 128px;
 }
 
 .cta-project__container {
@@ -312,7 +351,7 @@
 .cta-project__title {
   font-size: 32px;
   font-weight: var(--weight-medium);
-  color: var(--color-titles-primary);
+  color: var(--color-text-400);
   line-height: 1.4;
   max-width: 800px;
   margin: 0;
@@ -323,35 +362,103 @@
   justify-content: center;
 }
 
-/* Estilo del Botón Secundario con Icono */
-.btn--secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 32px;
-  background-color: transparent;
-  color: var(--color-titles-primary);
-  border: 1px solid var(--color-titles-primary);
-  border-radius: 100px;
-  font-size: 16px;
-  font-weight: var(--weight-semibold);
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: pointer;
+@media (max-width: 744px) {
+  .project-header {
+    padding: 0 48px;
+  }
+
+  .project-header__title {
+    font-size: 32px;
+  }
+
+  .project-header__info {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 56px;
+  }
+
+  .project-visuals {
+    padding: 0 48px;
+  }
+
+  .project-visuals__main {
+    width: 100%;
+    height: 420px;
+  }
+
+  .project-visuals__main img {
+    width: 100%;
+    height: 420px;
+  }
+
+  .project-case__text {
+    font-size: 16px;
+  }
+
+  .btn-link-external__text {
+    font-size: 16px;
+  }
+
+  .section-title--small {
+    font-size: 20px;
+  }
+
+  .cta-project {
+    padding: 48px;
+    border-radius: 0;
+  }
+
+  /* Cronograma: scroll horizontal para preservar legibilidad */
+  .project-schedule__container {
+    padding: 0 24px;
+  }
+
+  .project-schedule {
+    --gantt-label-width: 140px;
+    --gantt-row-height: 48px;
+  }
+
+  .gantt {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    grid-template-columns: var(--gantt-label-width) minmax(480px, 1fr);
+    gap: 16px;
+    padding-bottom: 8px;
+  }
+
+  .gantt__label {
+    font-size: 13px;
+  }
+
+  .gantt__bar {
+    height: 28px;
+    font-size: 11px;
+    padding: 0 12px;
+  }
 }
 
-/* Efecto Hover para interactividad profesional */
-.btn--secondary:hover {
-  background-color: var(--color-titles-primary);
-  color: #FFFFFF;
-}
+@media (max-width: 500px) {
+  .project-schedule__container {
+    padding: 0 16px;
+  }
 
-/* Preparación para el icono de Figma */
-.icon-figma {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Cuando tengas el SVG o fuente de iconos, se verá aquí */
+  .project-schedule {
+    --gantt-label-width: 120px;
+    --gantt-row-height: 44px;
+  }
+
+  .gantt {
+    grid-template-columns: var(--gantt-label-width) minmax(420px, 1fr);
+    gap: 12px;
+  }
+
+  .gantt__label {
+    font-size: 12px;
+  }
+
+  .gantt__bar {
+    height: 26px;
+    font-size: 10px;
+    padding: 0 10px;
+  }
 }

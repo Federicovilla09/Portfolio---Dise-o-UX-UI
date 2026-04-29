@@ -3,49 +3,73 @@
 .hero {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
     gap: 64px;
-    align-self: stretch;
-    max-width: 1280px;
-    margin: 0 auto;
     padding: 80px 80px 176px 80px;
-    background-image: url('../assets/image/background\ hero.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    isolation: isolate;
+    align-self: stretch;
+    margin: 0 auto;
+    margin-bottom: 176px;
+    /* Gradient dark del sistema sobre la imagen original.
+       blend-mode: multiply oscurece la imagen con el gradient
+       conservando los detalles visibles. */
+    background-image:
+        linear-gradient(
+            105.21deg,
+            var(--color-text-400) 37.45%,
+            var(--color-primary-950) 89.58%
+        ),
+        url('../assets/image/img\ background\ hero.png');
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-blend-mode: multiply;
     width: 100%;
-    height: 100%;
-    min-height: 200px;
+    min-height: 561px;
 }
 
 .hero__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    gap: 16px;
+    align-items: flex-start;
+    gap: 64px;
     width: 100%;
 }
 
+/* Eyebrow con línea decorativa horizontal (16px) antes del texto */
 .hero__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 12px;
     font-weight: var(--weight-medium);
-    color: var(--color-text-primary);
+    color: var(--color-text-50);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
+}
+
+.hero__label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    background-color: var(--color-text-50);
+    flex-shrink: 0;
 }
 
 .hero__title {
     font-size: 56px;
     font-weight: var(--weight-bold);
-    color: var(--color-titles-primary);
+    color: var(--color-text-50);
     max-width: 900px;
 }
 
 .hero__subtitle {
     font-size: 18px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
+    color: var(--color-text-50);
     max-width: 900px;
 }
 
@@ -56,18 +80,34 @@
     flex-wrap: wrap;
 }
 
+/* Chip con texto en accent yellow (--color-special-badge) */
 .hero__projects {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 6px;
+    border-radius: 4px;
     font-size: 12px;
     font-weight: var(--weight-medium);
-    color: var(--color-text-primary);
+    color: var(--color-special-badge);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+}
+
+/* CTA del hero — Figma spec: bg navy + border light (heredados del
+   primary global), 305px fijo, tipografía 18px medium.
+   Override scoped — no afecta el primary global. */
+.hero .btn--primary {
+    width: 305px;
+    font-size: 18px;
+    font-weight: var(--weight-medium);
 }
 
 /* --- SECCIÓN: PROYECTOS DESTACADOS --- */
 
 .projects {
-    max-width: 1280px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0 80px 176px;
+    margin-bottom: 104px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -76,21 +116,21 @@
 .section-title {
     font-size: 36px;
     font-weight: var(--weight-semibold);
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
     width: 100%;
 }
 
 .section-description {
     font-size: 18px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
+    color: var(--color-text-300);
     width: 100%;
     margin-bottom: 64px;
 }
 
 .projects__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(357px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(357px, 1fr));
     gap: 24px;
     width: 100%;
     margin-bottom: 64px;
@@ -111,7 +151,7 @@
 .projects__all-link {
     font-size: 18px;
     font-weight: var(--weight-medium);
-    color: var(--color-text-primary);
+    color: var(--color-primary-900);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -120,9 +160,9 @@
 }
 
 .projects__all-link:hover {
-    color: var(--color-titles-primary);
-    border-bottom: 2px solid var(--color-text-primary);
-    border-color: var(--color-titles-primary);
+    color: var(--color-primary-600);
+    border-bottom: 2px solid var(--color-primary-600);
+    border-color: var(--color-primary-600);
 }
 
 .projects__all-link i {
@@ -132,9 +172,10 @@
 /* --- SECCIÓN: SERVICIOS --- */
 
 .services {
-    max-width: 1280px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0 80px 176px;
+    margin-top: 176px;
+    margin-bottom: 176px;
 }
 
 .services__grid {
@@ -145,39 +186,44 @@
 }
 
 .service-item {
-    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    padding: 24px;
     align-items: flex-start;
-    gap: 16px;
+    gap: 24px;
+    padding: 32px 24px;
     justify-self: stretch;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-100);
+    background-color: var(--color-surface-100);
+    box-shadow: 1px 1px 4px 0 rgba(203, 213, 225, 0.60);;
     border-radius: 8px;
     max-width: 536px;
-    overflow: hidden;
 }
 
-.info-card__graph {
-    position: absolute;
-    top: 0px;
-    right: -32px;
-    width: 100px;
-    height: 72px;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.8;
+/* Placeholder de icono — listo para insertar un SVG (Lucide 24px) */
+.service-item__icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-border-300);
 }
 
-.info-card__graph img {
+.service-item__icon svg {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    /* Asegura que la imagen mantenga su proporción */
+}
+
+.service-item__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
 }
 
 .service-item__title {
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
     font-size: 18px;
     font-weight: var(--weight-medium);
     line-height: var(--line-height-titles);
@@ -185,7 +231,7 @@
 }
 
 .service-item__text {
-    color: var(--color-text-primary);
+    color: var(--color-text-300);
     font-size: 14px;
     font-weight: var(--weight-regular);
     line-height: var(--line-height-body);
@@ -194,9 +240,10 @@
 /* --- SECCIÓN: SOBRE MÍ --- */
 
 .about {
-    max-width: 1280px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0 80px 176px;
+    margin-top: 176px;
+    margin-bottom: 176px;
 }
 
 .about__container {
@@ -216,7 +263,7 @@
 .about__title {
     font-size: 36px;
     font-weight: var(--weight-semibold);
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
 }
 
 .about_paragraph {
@@ -228,13 +275,13 @@
 .about_paragraph p {
     font-size: 18px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
+    color: var(--color-text-300);
     line-height: var(--line-height-body);
 
 }
 
 .titles-paragraphs__content p strong {
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
     font-weight: var(--weight-semibold);
     font-size: 16px;
 }
@@ -244,6 +291,7 @@
     margin: 0;
     overflow: hidden;
     border-radius: 12px;
+    box-shadow: 1px 1px 4px 0 rgba(203, 213, 225, 0.60);
 }
 
 .about__image img {
@@ -253,82 +301,156 @@
     object-fit: cover;
 }
 
-/* --- SECCIÓN: PROCESO DE TRABAJO --- */
+/* --- SECCIÓN: PROCESO DE TRABAJO (timeline cards alternadas) --- */
 
 .process {
-    max-width: 1280px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0 80px 176px;
+    margin-top: 176px;
+    margin-bottom: 264px;
 }
 
 .process__list {
+    --process-axis-left: 50%;
+    --process-axis-color: var(--color-border-200);
+    --process-node-outer: 22px;
+    --process-node-inner: 14px;
+    --process-card-gap: 60px;
+    --process-connector: 48px;
     list-style: none;
     padding: 0;
     margin: 64px 0 0 0;
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
+    gap: 48px;
 }
 
+/* Eje vertical central */
 .process__list::before {
     content: '';
     position: absolute;
-    left: 35px;
+    left: var(--process-axis-left);
     top: 0;
-    height: calc(100% - 68px);
+    bottom: 0;
     width: 1px;
-    background-color: var(--color-border);
+    background-color: var(--process-axis-color);
+    transform: translateX(-50%);
     z-index: 1;
 }
 
 .process-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 32px;
-    margin-bottom: 48px;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+/* Nodo sobre el eje: círculo interno (primary-500) + anillo externo
+   (primary-100) — total 22px, según Figma. Resuelto con un único pseudo
+   y box-shadow expansivo en lugar de dos pseudos. */
+.process-step::before {
+    content: '';
+    position: absolute;
+    left: var(--process-axis-left);
+    top: 50%;
+    width: var(--process-node-inner);
+    height: var(--process-node-inner);
+    border-radius: 50%;
+    background-color: var(--color-primary-500);
+    box-shadow: 0 0 0 4px var(--color-primary-100);
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+/* Card — Figma spec: bg surface-50 #F8FAFC, radius 12, shadow Medium */
+.process-step__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 360px;
+    min-height: 160px;
+    padding: 24px;
+    background-color: var(--color-surface-50);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px 0 rgba(203, 213, 225, 0.8);
     z-index: 2;
 }
 
-.process-step:last-child {
-    margin-bottom: 0;
+/* Pasos impares: card a la izquierda del eje */
+.process-step:nth-child(odd) .process-step__card {
+    grid-column: 1;
+    justify-self: end;
+    margin-right: var(--process-card-gap);
 }
 
+/* Pasos pares: card a la derecha del eje */
+.process-step:nth-child(even) .process-step__card {
+    grid-column: 2;
+    justify-self: start;
+    margin-left: var(--process-card-gap);
+}
+
+/* Connector horizontal del card al nodo (48px exacto Figma) */
+.process-step__card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: var(--process-connector);
+    height: 1px;
+    background-color: var(--process-axis-color);
+    transform: translateY(-50%);
+}
+
+.process-step:nth-child(odd) .process-step__card::after {
+    right: calc(var(--process-connector) * -1);
+}
+
+.process-step:nth-child(even) .process-step__card::after {
+    left: calc(var(--process-connector) * -1);
+}
+
+/* Número arriba-derecha. Figma: 18px Bold uppercase + min-width 100% +
+   text-align right. Sin position absolute — fluye como primer hijo flex. */
 .process-step__number {
-    width: 72px;
-    height: 72px;
-    background-color: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
-    flex-shrink: 0;
+    width: 100%;
+    font-size: 18px;
+    font-weight: var(--weight-bold);
+    color: var(--color-text-200);
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    line-height: 1.24;
+    font-variant-numeric: tabular-nums;
 }
 
-.process-step__info {
+/* Wrapper título + descripción — gap 16px (Figma) */
+.process-step__paragraph {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding-top: 8px;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
 }
 
 .process-step__title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: var(--weight-semibold);
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
     letter-spacing: var(--letter-spacing);
+    line-height: 1.24;
+    white-space: nowrap;
 }
 
 .process-step__text {
     font-size: 14px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
-    max-width: 600px;
+    color: var(--color-text-300);
     line-height: var(--line-height-body);
+    width: 310px;
+    max-width: 100%;
 }
 
 /* --- SECCIÓN: CTA FINAL --- */
@@ -337,8 +459,13 @@
     max-width: 1120px;
     margin: 0 auto;
     padding: 104px 0 104px 0;
-    background-color: var(--color-bg-alt);
+    background: linear-gradient(
+        105deg,
+        var(--color-text-400) 37.45%,
+        var(--color-primary-950) 89.58%
+    );
     border-radius: 24px;
+    box-shadow: 4px 4px 24px 0 rgba(203, 213, 225, 0.80);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -350,7 +477,7 @@
 .cta-final__title {
     font-size: 48px;
     font-weight: var(--weight-semibold);
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
     max-width: auto;
     line-height: var(--line-height-titles);
 }
@@ -358,33 +485,42 @@
 .cta-final__text {
     font-size: 20px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
+    color: var(--color-text-200);
     max-width: auto;
     line-height: var(--line-height-body);
+}
+
+/* Overrides scoped: textos y botones sobre el fondo dark del CTA */
+.cta-final .cta-final__title {
+    color: var(--color-text-100);
+}
+
+.cta-final .cta-final__text {
+    color: var(--color-text-100);
+}
+
+.cta-final .btn--secondary {
+    background: var(--color-primary-50);
+    color: var(--color-primary-950);
 }
 
 .cta-final__actions {
     display: flex;
     justify-content: center;
     gap: 64px;
-    flex-wrap: wrap;
+    width: 100%;
 }
 
 .cta-final__note {
     font-size: 16px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
+    color: var(--color-text-100);
     letter-spacing: var(--letter-spacing);
     opacity: 0.7;
 }
 
 /* --- TABLET BREAKPOINT (Max 744px) --- */
 @media (max-width: 744px) {
-
-
-    .navbar {
-        padding: 48px;
-    }
 
     .hero {
         padding: 80px 48px 128px 48px;
@@ -410,6 +546,12 @@
     .btn--primary,
     .btn--secondary {
         flex: 1;
+    }
+
+    /* En tablet/mobile el width fijo del CTA del hero (305px desktop)
+       pasa a fluido para no desbordar pantallas chicas. */
+    .hero .btn--primary {
+        width: auto;
     }
 
     .projects {
@@ -506,6 +648,21 @@
         padding: 0 48px 128px 48px;
     }
 
+    /* Tablet — Figma 2615:3205: alternado, card 277px, gap 46/connector 37 */
+    .process__list {
+        --process-card-gap: 46px;
+        --process-connector: 37px;
+    }
+
+    .process-step__card {
+        width: 277px;
+        padding: 24px;
+        min-height: 144px;
+    }
+
+    /* Mantengo tipografía de desktop (18px title + nowrap) — Figma tablet
+       conserva las mismas escalas tipográficas. */
+
     .cta-final {
         border-radius: 0;
         padding: 104px 48px;
@@ -559,14 +716,81 @@
         gap: 16px;
     }
 
-    .hero, 
-    .projects, 
-    .services, 
-    .about, 
-    .process, 
-    .cta-final, 
-    .footer__container {
-        padding: 80px 24px;
+    .hero {
+        padding: 64px 16px 124px 16px;
+    }
+
+    .projects {
+        padding: 40px 16px 176px 16px;
+    }
+
+    .services, .about {
+        padding: 0 16px 176px 16px;
+    }
+
+    .process {
+        padding: 0 16px 40px 16px;
+    }
+
+    /* Mobile — Figma 2618:3453: una columna con eje lateral.
+       Eje en x=11px, indicator 22px sobre el eje, connector 40px,
+       card empieza en x=62 (22+40), padding 16, content compacto. */
+    .process__list {
+        --process-axis-left: 11px;
+        --process-card-gap: 62px;
+        --process-connector: 40px;
+        gap: 48px;
+    }
+
+    .process__list::before {
+        transform: none;
+    }
+
+    /* Grid explícito: col1 reservada para eje + indicator + connector,
+       col2 toma el espacio restante para que la card sea fluid y todas
+       midan exactamente lo mismo. */
+    .process-step {
+        grid-template-columns: var(--process-card-gap) 1fr;
+    }
+
+    /* Todas las cards en col 2, ancho completo de su columna */
+    .process-step:nth-child(odd) .process-step__card,
+    .process-step:nth-child(even) .process-step__card {
+        grid-column: 2;
+        justify-self: stretch;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    /* Connector horizontal a la izquierda del card en todas */
+    .process-step:nth-child(odd) .process-step__card::after,
+    .process-step:nth-child(even) .process-step__card::after {
+        right: auto;
+        left: calc(var(--process-connector) * -1);
+    }
+
+    .process-step__card {
+        padding: 16px;
+        min-height: 150px;
+    }
+
+    /* Número alineado a la izquierda en mobile (Figma) */
+    .process-step__number {
+        text-align: left;
+    }
+
+    .process-step__title {
+        font-size: 16px;
+    }
+
+    .process-step__text {
+        font-size: 12px;
+        width: auto;
+    }
+
+    .cta-final {
+        padding: 104px 16px;
     }
 
     .section-divider {
@@ -574,13 +798,12 @@
     }
 
     .hero__title {
-        font-size: 36px;
+        font-size: 32px;
     }
 
     .hero__actions,
     .cta-final__actions {
         display: flex;
-        flex-direction: column;
         gap: 24px;
         box-sizing: border-box;
     }
@@ -612,7 +835,7 @@
 
     .about__container {
         flex-direction: column;
-        gap: 0;
+        gap: 40px;
     }
 
     .about_titles-paragraphs {
@@ -738,8 +961,10 @@
         padding: 0 16px 176px 16px;
     }
 
-    .process-step {
-        gap: 16px;
+    /* Mobile <=390px — hereda layout del bloque ≤500 (Figma 2618:3453).
+       Solo se compacta el gap vertical para pantallas estrechas. */
+    .process__list {
+        gap: 20px;
     }
 
     .cta-final {

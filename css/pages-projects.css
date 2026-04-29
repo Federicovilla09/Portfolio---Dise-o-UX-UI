@@ -1,15 +1,16 @@
 /* --- PÁGINA: ARCHIVO DE PROYECTOS --- */
 
 .projects-archive {
-    max-width: 1280px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 80px 80px 64px 80px;
+    margin-bottom: 64px;
 }
 
 .projects-archive__header {
     display: flex;
     flex-direction: column;
-    gap: 32px; /* Gap solicitado entre título y subtítulo */
+    gap: 32px;
+    /* Gap solicitado entre título y subtítulo */
     margin-top: 80px;
     max-width: 1120px;
 }
@@ -17,14 +18,14 @@
 .projects-archive__title {
     font-size: 36px;
     font-weight: var(--weight-semibold);
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
     line-height: var(--line-height-titles);
 }
 
 .projects-archive__subtitle {
     font-size: 18px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
+    color: var(--color-text-200);
     line-height: var(--line-height-body);
 }
 
@@ -44,28 +45,204 @@
 .filter-btn {
     font-size: 12px;
     font-weight: var(--weight-medium);
-    color: var(--color-text-primary);
+    color: var(--color-text-200);
     letter-spacing: var(--letter-spacing);
     transition: color 0.3s ease;
     white-space: nowrap;
 }
 
 .filter-btn:hover {
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
 }
 
 .filter-btn--active {
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
     position: relative;
 }
 
-/* --- GRID DE PROYECTOS (ARCHIVO) --- */
 
+/* Grid de proyectos — base mobile-first: 1 columna, padding lateral 16px.
+   Tablet (≥744px) → 2 columnas, padding 48px.
+   Desktop (≥1024px) → 3 columnas. */
 .projects-grid-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(357px, 1fr));
-    gap: 24px;
     max-width: 1120px;
-    margin: 0 auto;
+    margin: 0 auto 64px;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    width: 100%;
 }
 
+.proyectos-extend {
+    margin-bottom: 128px;
+}
+
+.btn-fantasma {
+    max-width: 1120px;
+    margin: 0 auto;
+    background: transparent;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.proyectos-extend__content {
+    display: none;
+    /* Oculto inicial con display: none */
+    opacity: 0;
+    transition: opacity 0.4s ease, display 0.4s ease;
+    padding: 20px 0;
+}
+
+/* --- Clase de estado activo (se añade con JS) --- */
+.proyectos-extend__content.is-active {
+    display: block;
+    /* Muestra el contenido */
+    opacity: 1;
+}
+
+.hidden__text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.navbar__identity p {
+    font-size: 16px;
+    color: var(--color-text-200);
+}
+
+
+/* --- Breakpoint Tablet (744px) --- */
+@media (min-width: 744px) {
+
+    .projects-archive {
+        padding: 80px 48px 64px 48px;
+    }
+
+    .projects-archive__title {
+        font-size: 32px;
+    }
+
+    .projects-archive__subtitle {
+        font-size: 16px;
+    }
+
+    .projects-filter__list {
+        flex-wrap: nowrap;
+        gap: 24px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        margin-bottom: 24px;
+    }
+
+    .projects-filter__list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .projects-filter__item {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .projects-grid-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        width: 100%;
+        margin-bottom: 64px;
+        padding: 0 48px;
+    }
+
+    .proyectos-extend {
+        width: 100%;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .proyectos-extend__toggle-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 24px;
+    }
+
+    /* --- Botón Fantasma base --- */
+    .btn-fantasma {
+        background: transparent;
+        padding: 10px 24px;
+        font-size: 14px;
+        font-weight: var(--weight-medium);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    /* --- Contenido Oculto por defecto --- */
+    .proyectos-extend__content {
+        display: none;
+        /* Oculto inicial con display: none */
+        opacity: 0;
+        transition: opacity 0.4s ease, display 0.4s ease;
+        padding: 20px 0;
+    }
+
+    /* --- Clase de estado activo (se añade con JS) --- */
+    .proyectos-extend__content.is-active {
+        display: block;
+        /* Muestra el contenido */
+        opacity: 1;
+    }
+
+    .hidden__text {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .navbar__identity p {
+        font-size: 16px;
+        color: var(--color-text-200);
+    }
+
+
+    /* 3. Ajuste de tipografía para pantallas más grandes */
+    .hero__title {
+        font-size: 48px;
+        /* Un poco más grande para llenar el espacio */
+    }
+
+    .section-title {
+        font-size: 40px;
+    }
+
+    /* 4. Ajuste de componentes Sobre mí / Servicios */
+    .about__container {
+        flex-direction: row;
+        /* Ponemos imagen y texto uno al lado del otro */
+        align-items: center;
+        gap: 48px;
+    }
+
+    .about__image {
+        width: 50%;
+        /* La imagen ocupa la mitad */
+        margin-top: 0;
+    }
+}
+
+/* --- Breakpoint Desktop (1024px) — Grid 3 columnas --- */
+@media (min-width: 1024px) {
+    .projects-grid-section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

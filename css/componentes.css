@@ -2,8 +2,11 @@
 
 .navbar {
     width: 100%;
-    background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(
+            105.21deg,
+            var(--color-text-400) 37.45%,
+            var(--color-primary-950) 89.58%
+        );
     height: 80px;
     display: flex;
     align-items: center;
@@ -13,7 +16,7 @@
 }
 
 .navbar__container {
-    max-width: 1200px;
+    max-width: 1120px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -31,7 +34,7 @@
 .navbar__logo {
     font-size: 16px;
     font-weight: var(--weight-medium);
-    color: var(--color-titles-primary);
+    color: var(--color-text-100);
     letter-spacing: var(--letter-spacing);
 }
 
@@ -46,12 +49,12 @@
     gap: 8px;
     font-size: 14px;
     font-weight: var(--weight-medium);
-    color: var(--color-text-primary);
+    color: var(--color-text-100);
     transition: color 0.3s ease;
 }
 
 .navbar__back .back-link:hover {
-    color: var(--color-titles-primary);
+    color: var(--color-surface-0);
 }
 
 .navbar__back .back-link i {
@@ -66,11 +69,11 @@
     width: 100%;
     height: 1px;
     border: none;
-    background-color: var(--color-border);
+    background-color: var(--color-border-100);
 }
 
 .divider--light {
-    background-color: var(--color-text-secondary);
+    background-color: var(--color-surface-0);
 }
 
 .section-divider {
@@ -78,13 +81,13 @@
     align-items: center;
     gap: 16px;
     width: 100%;
-    margin: 60px 0 32px;
+    margin-bottom: 64px;
 }
 
 .section-divider__text {
     font-size: 12px;
     font-weight: var(--weight-medium);
-    color: var(--color-text-primary);
+    color: var(--color-primary-900);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
     white-space: nowrap;
@@ -93,7 +96,7 @@
 .section-divider__line {
     flex-grow: 1;
     height: 1px;
-    background-color: var(--color-border);
+    background-color: var(--color-border-400);
 }
 
 /* --- BOTÓN PRIMARIO --- */
@@ -105,28 +108,18 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
-    background-color: var(--color-dark);
-    color: var(--color-text-secondary);
+    background: var(--color-primary-950);
+    color: var(--color-text-100);
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     font-weight: var(--weight-semibold);
     letter-spacing: var(--letter-spacing);
     text-transform: uppercase;
-    border: none;
-    border-radius: 100px;
+    border: 1px solid var(--color-primary-50);
+    border-radius: 999px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: transform 0.2s ease;
     width: fit-content;
-}
-
-.btn--primary:hover {
-    background-color: var(--color-bg-alt);
-    color: var(--color-dark);
-    transform: translateY(-2px);
-}
-
-.btn--primary:active {
-    transform: translateY(0);
 }
 
 /* --- BOTÓN SECUNDARIO --- */
@@ -138,43 +131,51 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
-    background-color: transparent;
-    color: var(--color-dark);
-    border: 1px solid var(--color-dark);
+    background: var(--color-primary-50);
+    color: var(--color-primary-950);
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     font-weight: var(--weight-semibold);
     letter-spacing: var(--letter-spacing);
     text-transform: uppercase;
-    border-radius: 100px;
+    border: none;
+    border-radius: 999px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease;
     width: fit-content;
 }
 
-.btn--secondary:hover {
-    background-color: var(--color-dark);
-    color: var(--color-text-secondary);
-    transform: translateY(-2px);
+/* Hover sólo en dispositivos con puntero real (desktop). En touch
+   evitamos el hover "pegado" después del tap. */
+@media (hover: hover) {
+    .btn--primary:hover,
+    .btn--secondary:hover {
+        transform: scale(1.03);
+    }
 }
 
+/* Press / tap — feedback táctil en todos los dispositivos */
+.btn--primary:active,
 .btn--secondary:active {
-    transform: translateY(0);
+    transform: scale(0.97);
 }
 
 /* --- COMPONENTE: PROJECT CARD --- */
 
 .project-card {
-    width: 357px;
-    background-color: var(--color-dark);
-    border-radius: 12px;
+    background-color: var(--color-surface-200);
+    border: 1px solid var(--color-border-300);
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 2px 2px 10px 0 rgba(203, 213, 225, 0.80);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow:
+        0 12px 32px rgba(2, 26, 84, 0.10),
+        0 6px 16px rgba(2, 26, 84, 0.08);
 }
 
 /* Imagen del Proyecto */
@@ -197,8 +198,7 @@
 /* Tag superior (Ej: APLICACIÓN WEB) */
 .project-card__tag {
     display: block;
-    color: var(--color-text-primary);
-    /* Gris suave según variable */
+    color: var(--color-text-300);
     font-size: 12px;
     font-weight: var(--weight-bold);
     text-transform: uppercase;
@@ -213,8 +213,7 @@
 
 /* Título del Proyecto */
 .project-card__name {
-    color: var(--color-text-secondary);
-    /* Blanco según variable */
+    color: var(--color-text-400);
     font-size: 16px;
     font-weight: var(--weight-semibold);
 }
@@ -223,7 +222,7 @@
 .project-card__text {
     font-size: 14px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-secondary);
+    color: var(--color-text-300);
 }
 
 /* Meta: Valoraciones */
@@ -232,13 +231,19 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    color: var(--color-text-secondary);
+    color: var(--color-dark-soft);
 }
 
 .project-card__meta .likes {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.project-card__meta .sr-only {
+    font-size: 12px;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
 }
 
 .project-card__rating {
@@ -248,6 +253,11 @@
     gap: 8px;
     font-size: 16px;
     font-weight: var(--weight-medium);
+}
+
+/* Divider interno del card adaptado al fondo claro */
+.project-card .divider--light {
+    background-color: var(--color-border-100);
 }
 
 /* Lista de Labels (Metodologías/Tech) */
@@ -261,8 +271,8 @@
 
 /* Estilo para las etiquetas individuales */
 .project-card__labels .label {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--color-text-secondary);
+    background: var(--color-primary-200);
+    color: var(--color-text-400);
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 10px;
@@ -271,8 +281,8 @@
 }
 
 .hero__badge {
-    border: 1px solid var(--color-border);
-    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-100);
+    color: var(--color-text-200);
     padding: 8px 6px;
     border-radius: 4px;
     font-size: 12px;
@@ -280,7 +290,7 @@
     text-transform: uppercase;
 }
 
-/* Botón Ver Caso (Basado en color-bg-alt para contraste) */
+/* CTA "Ver caso" — pill con jerarquía de acción */
 .link-caso {
     align-self: flex-end;
     display: flex;
@@ -289,9 +299,9 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border-radius: 100px;
-    background-color: var(--color-bg-alt);
-    color: var(--color-titles-primary);
+    border-radius: 999px;
+    background: var(--color-primary-950);
+    color: var(--color-text-100);
     font-size: 12px;
     font-weight: var(--weight-regular);
     text-transform: uppercase;
@@ -319,9 +329,9 @@
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-border-100);
     border-radius: 100px;
-    color: var(--color-text-primary);
+    color: var(--color-text-200);
     font-size: 12px;
     font-weight: var(--weight-medium);
     letter-spacing: var(--letter-spacing);
@@ -331,38 +341,37 @@
 
 /* Estado Hover */
 .filter-btn:hover {
-    color: var(--color-titles-primary);
+    color: var(--color-text-400);
     background-color: rgba(26, 26, 26, 0.03);
     /* Un toque muy sutil */
 }
 
 /* Estado Activo (Seleccionado) */
 .filter-btn--active {
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-surface-100);
     /* Color beige de tu paleta */
-    border-color: var(--color-bg-alt);
-    color: var(--color-titles-primary);
+    border-color: var(--color-surface-100);
+    color: var(--color-text-400);
     font-weight: var(--weight-semibold);
 }
 
 .filter-btn--active {
-    background-color: var(--color-bg-alt);
-    border-color: var(--color-dark);
-    color: var(--color-text-secondary);
+    background-color: var(--color-surface-100);
+    border-color: var(--color-text-400);
+    color: var(--color-surface-0);
 }
 
 /* --- COMPONENTE: FOOTER --- */
 
 .footer {
-    background-color: var(--color-bg-alt);
+    background: var(--color-text-400);
     padding: 80px 40px;
 }
 
 .footer__container {
-    max-width: 1200px;
-    /* Ajustar según tu layout general */
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 0 40px;
+    
 }
 
 /* Distribución de las 3 columnas */
@@ -380,21 +389,21 @@
 .footer__brand p:first-child {
     font-size: 16px;
     font-weight: var(--weight-medium);
-    color: var(--color-titles-primary);
+    color: var(--color-text-100);
     margin-bottom: 16px;
 }
 
 .footer__brand p:last-child {
     font-size: 14px;
     font-weight: var(--weight-medium);
-    color: var(--color-text-primary);
+    color: var(--color-text-100);
 }
 
 /* Títulos de las columnas (Navegación / Contactos) */
 .footer__title {
     font-size: 14px;
     font-weight: var(--weight-medium);
-    color: var(--color-titles-primary);
+    color: var(--color-text-100);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
     margin-bottom: 16px;
@@ -412,7 +421,7 @@
 .footer__list a {
     font-size: 14px;
     font-weight: var(--weight-medium);
-    color: var(--color-text-primary);
+    color: var(--color-text-100);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -420,7 +429,7 @@
 }
 
 .footer__list a:hover {
-    color: var(--color-titles-primary);
+    color: var(--color-surface-0);
 }
 
 /* Parte inferior: Línea y Copyright */
@@ -431,14 +440,14 @@
 .footer__line {
     width: 100%;
     height: 1px;
-    background-color: var(--color-border);
+    background-color: var(--color-text-300);
     margin-bottom: 32px;
 }
 
 .footer__bottom p {
     font-size: 14px;
     font-weight: var(--weight-regular);
-    color: var(--color-text-primary);
+    color: var(--color-text-100);
     opacity: 0.8;
 }
 
@@ -448,6 +457,14 @@
     width: 20px;
     /* Ancho fijo para alinear el texto de los links */
     text-align: center;
+}
+
+/* --- Breakpoint Tablet (744px) --- */
+@media (min-width: 744px) {
+
+    .navbar {
+        padding: 48px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -474,5 +491,84 @@
     /* 2. Aseguramos que el botón de volver no se "coma" el espacio del logo */
     .navbar__back {
         flex: 0 0 auto; /* Evita que el botón de volver se encoja o desaparezca */
+    }
+}
+
+/* --- COMPONENTE: FLOATING CONTACT BUTTON (WhatsApp) --- */
+
+.floating-btn {
+    position: fixed;
+    right: 32px;
+    bottom: 64px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    background: linear-gradient(
+        135deg,
+        var(--gradient-success-start),
+        var(--gradient-success-end)
+    );
+    color: var(--color-surface-0);
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--letter-spacing);
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(31, 175, 56, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.floating-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 32px rgba(31, 175, 56, 0.36);
+}
+
+.floating-btn:active {
+    transform: scale(0.98);
+}
+
+.floating-btn:focus-visible {
+    outline: 2px solid var(--color-surface-0);
+    outline-offset: 3px;
+}
+
+.floating-btn__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.floating-btn__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 744px) {
+    .floating-btn {
+        right: 24px;
+        bottom: 28px;
+        padding: 12px 18px;
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .floating-btn__icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 390px) {
+    .floating-btn {
+        right: 16px;
+        bottom: 24px;
+        padding: 12px 16px;
+        font-size: 12px;
     }
 }
