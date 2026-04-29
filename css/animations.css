@@ -18,3 +18,75 @@
     transform: translateX(0);
     pointer-events: all;
 }
+
+/* --- REVEAL ON SCROLL ---
+   Aparición progresiva de secciones al entrar en viewport.
+   La clase .reveal-on-scroll la aplica JavaScript (script.js) sólo
+   a secciones below-the-fold, así no hay flash de contenido oculto
+   en el primer paint y si JS no carga todo se ve normal. */
+
+@media (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Reveal direccional para las cards del timeline (process).
+       Sólo se anima la card; el eje vertical y los nodos quedan
+       anclados (no reciben la clase) para preservar el timeline
+       visible durante toda la navegación. */
+    .process-step__card.reveal-step {
+        opacity: 0;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .process-step__card.reveal-step--left {
+        transform: translateX(-32px);
+    }
+
+    .process-step__card.reveal-step--right {
+        transform: translateX(32px);
+    }
+
+    .process-step__card.reveal-step.is-visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Pulse continuo en cada nodo del timeline.
+       El ::before sigue siendo el nodo principal (sólido, encima);
+       este ::after es el halo expansivo que late detrás. */
+    .process-step::after {
+        content: '';
+        position: absolute;
+        left: var(--process-axis-left);
+        top: 50%;
+        width: var(--process-node-outer);
+        height: var(--process-node-outer);
+        border-radius: 50%;
+        background-color: var(--color-primary-300);
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        pointer-events: none;
+        animation: process-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes process-pulse {
+        0% {
+            opacity: 0.45;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(2.2);
+        }
+    }
+}

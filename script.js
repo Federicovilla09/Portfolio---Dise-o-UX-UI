@@ -76,3 +76,86 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// Reveal on scroll — aparición progresiva de secciones al entrar al viewport.
+// Excluimos el hero (siempre visible) para evitar flash en el primer paint.
+document.addEventListener("DOMContentLoaded", () => {
+    if (!('IntersectionObserver' in window)) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const targets = document.querySelectorAll(
+        '.projects, .services, .about, .cta-final, .footer, ' +
+        '.projects-archive, .projects-grid-section, .proyectos-extend, ' +
+        '.project-header, .project-visuals, .project-case, .project-schedule, ' +
+        '.feedback-link, .cta-project, ' +
+        '.under-construction'
+    );
+
+    if (!targets.length) return;
+
+    targets.forEach(el => el.classList.add('reveal-on-scroll'));
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px'
+    });
+
+    targets.forEach(el => observer.observe(el));
+});
+
+// Reveal direccional para las cards del process.
+// La línea central y los nodos quedan siempre visibles; sólo las cards
+// entran desde su lado correspondiente al cruzar el viewport.
+document.addEventListener("DOMContentLoaded", () => {
+    if (!('IntersectionObserver' in window)) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const steps = document.querySelectorAll('.process-step');
+    if (!steps.length) return;
+
+    const isMobile = window.matchMedia('(max-width: 500px)').matches;
+
+    const cards = [];
+    steps.forEach((step, idx) => {
+        const card = step.querySelector('.process-step__card');
+        if (!card) return;
+
+        card.classList.add('reveal-step');
+
+        // Mobile: todas entran desde la derecha (layout columna única).
+        // Desktop/tablet: alternan según posición de la card en el grid.
+        if (isMobile) {
+            card.classList.add('reveal-step--right');
+        } else {
+            const isOdd = idx % 2 === 0; // idx 0 es el step 1 (visualmente impar → izquierda)
+            card.classList.add(isOdd ? 'reveal-step--left' : 'reveal-step--right');
+        }
+
+        cards.push(card);
+    });
+
+    const stepObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                stepObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -8% 0px'
+    });
+
+    cards.forEach(card => stepObserver.observe(card));
+});
