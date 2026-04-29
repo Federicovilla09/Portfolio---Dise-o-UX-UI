@@ -685,19 +685,6 @@
         font-size: 14px;
     }
 
-    .footer {
-        padding: 0;
-    }
-
-    .footer__container {
-        padding: 48px;
-    }
-
-    .footer__top {
-        display: flex;
-        flex-direction: column;
-        gap: 48px;
-    }
 }
 
 /* --- Breakpoint Premium: 394px a 500px --- 
@@ -793,9 +780,6 @@
         padding: 104px 16px;
     }
 
-    .section-divider {
-        margin-bottom: 80px;
-    }
 
     .hero__title {
         font-size: 32px;
@@ -993,10 +977,6 @@
 
     .cta-final__note {
         font-size: 12px;
-    }
-
-    .footer__container {
-        padding: 48px 16px;
     }
 
 }

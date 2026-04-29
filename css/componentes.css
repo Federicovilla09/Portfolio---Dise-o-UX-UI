@@ -81,7 +81,7 @@
     align-items: center;
     gap: 16px;
     width: 100%;
-    margin-bottom: 64px;
+    margin-bottom: 80px;
 }
 
 .section-divider__text {
@@ -570,5 +570,32 @@
         bottom: 24px;
         padding: 12px 16px;
         font-size: 12px;
+    }
+}
+
+/* --- COMPONENTE: FOOTER (responsive global) ---
+   Estos overrides se movieron desde home.css a componentes.css
+   para que el footer responsive aplique a todas las páginas que
+   carguen el componente, no sólo al Home. */
+
+@media (max-width: 744px) {
+    .footer {
+        padding: 0;
+    }
+
+    .footer__container {
+        padding: 48px;
+    }
+
+    .footer__top {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+    }
+}
+
+@media (max-width: 390px) {
+    .footer__container {
+        padding: 48px 16px;
     }
 }
