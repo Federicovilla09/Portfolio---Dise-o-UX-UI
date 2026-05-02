@@ -93,13 +93,15 @@
     letter-spacing: var(--letter-spacing);
 }
 
-/* CTA del hero — Figma spec: bg navy + border light (heredados del
-   primary global), 305px fijo, tipografía 18px medium.
-   Override scoped — no afecta el primary global. */
+/* CTA del hero — sigue siendo el primary semánticamente (clase
+   .btn--primary intacta en HTML), pero adopta los visuales del
+   secondary: bg primary-50, texto primary-950, sin border.
+   Override scoped — sólo afecta al CTA dentro de .hero. */
 .hero .btn--primary {
     width: 305px;
-    font-size: 18px;
-    font-weight: var(--weight-medium);
+    background: var(--color-primary-50);
+    color: var(--color-primary-950);
+    border: none;
 }
 
 /* --- SECCIÓN: PROYECTOS DESTACADOS --- */
@@ -597,13 +599,13 @@
     .mobile-only-component .dot.active {
         width: 24px;
         border-radius: 999px;
-        background-color: #4B5563;
+        background-color: var(--color-primary-800);
     }
 
     .mobile-only-component .dot {
         width: 10px;
         height: 10px;
-        background-color: #D1D5DB;
+        background-color: var(--color-primary-100);
         border-radius: 50%;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;

@@ -1,0 +1,1985 @@
+/* === BASE === */
+:root {
+    /* ============================================================
+       TYPOGRAPHY (Raleway)
+       Pesos de tipografía base del sistema.
+       ============================================================ */
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* ============================================================
+       TEXT GLOBAL SETTINGS
+       Ajustes globales de texto aplicados desde body / headings.
+       ============================================================ */
+    --letter-spacing: 0.60px;
+    --line-height-titles: 1.24; /* 124% */
+    --line-height-body: 1.50;   /* 150% */
+
+    /* ============================================================
+       COLORS
+       Paleta oficial del Design System.
+       ============================================================ */
+
+    /* --- Primary --- */
+    --color-primary-50:  #EAF5FF;
+    --color-primary-100: #CFE7FF;
+    --color-primary-200: #AAD5FF;
+    --color-primary-300: #6FBCFF;
+    --color-primary-400: #2C98FF;
+    --color-primary-500: #0071FF;
+    --color-primary-600: #0060FF;
+    --color-primary-700: #0053FF;
+    --color-primary-800: #0043E0;
+    --color-primary-900: #0038AE;
+    --color-primary-950: #021A54;
+
+    /* --- Text --- */
+    --color-text-50:  #F8FAFC;
+    --color-text-100: #E2E8F0;
+    --color-text-200: #64748B;
+    --color-text-300: #334155;
+    --color-text-400: #0B1220;
+
+    /* --- Surface --- */
+    --color-surface-0:   #FFFFFF;
+    --color-surface-50:  #F8FAFC;
+    --color-surface-100: #F1F5F9;
+    --color-surface-200: #E2E8F0;
+    --color-surface-300: #94A3B8;
+
+    /* --- Border --- */
+    --color-border-100: #E2E8F0;
+    --color-border-200: #CBD5E1;
+    --color-border-300: #94A3B8;
+    --color-border-400: #0038AE;
+
+    /* --- Dark --- */
+    --color-dark-soft:  #0A2A7A;
+    /* ============================================================
+       SPECIAL COLORS
+       Acentos puntuales fuera de la paleta principal
+       (badges destacados, highlights, estados especiales).
+       ============================================================ */
+    --color-special-badge: #F8FF2B;
+
+    /* ============================================================
+       GRADIENT REFERENCES
+       Tokens base reutilizables. No se exponen como linear-gradient
+       directo para preservar flexibilidad de ángulo y stops por uso.
+       Aplicar con:
+         background: linear-gradient(
+           180deg,
+           var(--gradient-dark-start) 40%,
+           var(--gradient-dark-end)   90%
+         );
+       Uso previsto: hero sections, CTA blocks, footer, fondos
+       destacados.
+       ============================================================ */
+
+    /* Gradient 01 — Dark
+       40% → Text / 400 · 90% → Primary / 950 */
+    --gradient-dark-start: var(--color-text-400);
+    --gradient-dark-end:   var(--color-primary-950);
+
+    /* Gradient 02 — Success
+       0% → #1FAF38 · 100% → #60D669 */
+    --gradient-success-start: #1FAF38;
+    --gradient-success-end:   #60D669;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: var(--color-surface-0);
+}
+
+.titles-paragraphs__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Aplicación de line-height según reglas */
+h1, h2, h3, h4, h5, h6 {
+    line-height: var(--line-height-titles);
+    letter-spacing: var(--letter-spacing);
+}
+
+p {
+    line-height: var(--line-height-body);
+    letter-spacing: var(--letter-spacing);
+}
+
+a {
+    text-decoration: none;
+}
+/* === COMPONENTES === */
+/* --- COMPONENTE: NAVBAR --- */
+
+.navbar {
+    width: 100%;
+    background: linear-gradient(
+            105.21deg,
+            var(--color-text-400) 37.45%,
+            var(--color-primary-950) 89.58%
+        );
+    height: 80px;
+    display: flex;
+    align-items: center;
+    top: 0;
+    position: sticky;
+    z-index: 9999;
+}
+
+.navbar__container {
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+}
+
+.navbar__logo {
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-100);
+    letter-spacing: var(--letter-spacing);
+}
+
+.navbar__logo--short {
+    display: none;
+}
+
+/* Navegación de retorno (Navbar Secundario) */
+.navbar__back .back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-100);
+    transition: color 0.3s ease;
+}
+
+.navbar__back .back-link:hover {
+    color: var(--color-surface-0);
+}
+
+.navbar__back .back-link i {
+    font-size: 18px;
+    /* Tamaño para el icono de flecha */
+}
+
+/* --- LINEA DE DIVISIÓN (SISTEMA BASE) --- */
+
+.divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: var(--color-border-100);
+}
+
+.divider--light {
+    background-color: var(--color-surface-0);
+}
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.section-divider__text {
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    color: var(--color-primary-900);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    white-space: nowrap;
+}
+
+.section-divider__line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--color-border-400);
+}
+
+/* --- BOTÓN PRIMARIO --- */
+
+.btn--primary {
+    display: flex;
+    height: 56px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-primary-950);
+    color: var(--color-text-100);
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+    border: 1px solid var(--color-primary-50);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: fit-content;
+}
+
+/* --- BOTÓN SECUNDARIO --- */
+
+.btn--secondary {
+    display: flex;
+    height: 56px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-primary-50);
+    color: var(--color-primary-950);
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: fit-content;
+}
+
+/* Hover sólo en dispositivos con puntero real (desktop). En touch
+   evitamos el hover "pegado" después del tap. */
+@media (hover: hover) {
+    .btn--primary:hover,
+    .btn--secondary:hover {
+        transform: scale(1.03);
+    }
+}
+
+/* Press / tap — feedback táctil en todos los dispositivos */
+.btn--primary:active,
+.btn--secondary:active {
+    transform: scale(0.97);
+}
+
+/* --- COMPONENTE: PROJECT CARD --- */
+
+.project-card {
+    background-color: var(--color-surface-200);
+    border: 1px solid var(--color-border-300);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px 0 rgba(203, 213, 225, 0.80);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 12px 32px rgba(2, 26, 84, 0.10),
+        0 6px 16px rgba(2, 26, 84, 0.08);
+}
+
+/* Imagen del Proyecto */
+.project-card__image img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 10;
+}
+
+/* Contenedor de Información */
+.project-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+}
+
+/* Tag superior (Ej: APLICACIÓN WEB) */
+.project-card__tag {
+    display: block;
+    color: var(--color-text-300);
+    font-size: 12px;
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+}
+
+.project__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+/* Título del Proyecto */
+.project-card__name {
+    color: var(--color-text-400);
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+}
+
+/* Descripción */
+.project-card__text {
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-300);
+}
+
+/* Meta: Valoraciones */
+.project-card__meta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--color-dark-soft);
+}
+
+.project-card__meta .likes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-card__meta .sr-only {
+    font-size: 12px;
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+}
+
+.project-card__rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+}
+
+/* Divider interno del card adaptado al fondo claro */
+.project-card .divider--light {
+    background-color: var(--color-border-100);
+}
+
+/* Lista de Labels (Metodologías/Tech) */
+.project-card__labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Estilo para las etiquetas individuales */
+.project-card__labels .label {
+    background: var(--color-primary-200);
+    color: var(--color-text-400);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+}
+
+.hero__badge {
+    border: 1px solid var(--color-border-100);
+    color: var(--color-text-200);
+    padding: 8px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+}
+
+/* CTA "Ver caso" — pill con jerarquía de acción */
+.link-caso {
+    align-self: flex-end;
+    display: flex;
+    height: 40px;
+    padding: 10px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 999px;
+    background: var(--color-primary-950);
+    color: var(--color-text-100);
+    font-size: 12px;
+    font-weight: var(--weight-regular);
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+}
+
+.link-caso:hover {
+    opacity: 0.9;
+}
+
+/* --- COMPONENTE: FILTER BADGE (Categorías) --- */
+
+.projects-filter__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 32px 0;
+}
+
+.filter-btn {
+    display: inline-flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--color-border-100);
+    border-radius: 100px;
+    color: var(--color-text-200);
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--letter-spacing);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Estado Hover */
+.filter-btn:hover {
+    color: var(--color-text-400);
+    background-color: rgba(26, 26, 26, 0.03);
+    /* Un toque muy sutil */
+}
+
+/* Estado Activo (Seleccionado) */
+.filter-btn--active {
+    background-color: var(--color-surface-100);
+    /* Color beige de tu paleta */
+    border-color: var(--color-surface-100);
+    color: var(--color-text-400);
+    font-weight: var(--weight-semibold);
+}
+
+.filter-btn--active {
+    background-color: var(--color-surface-100);
+    border-color: var(--color-text-400);
+    color: var(--color-surface-0);
+}
+
+/* --- COMPONENTE: FOOTER --- */
+
+.footer {
+    background: var(--color-text-400);
+    padding: 80px 40px;
+}
+
+.footer__container {
+    max-width: 1120px;
+    margin: 0 auto;
+    
+}
+
+/* Distribución de las 3 columnas */
+.footer__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    /* Responsive: se apilan en móviles */
+    margin-bottom: 60px;
+}
+
+/* Columna de Marca/Nombre */
+.footer__brand p:first-child {
+    font-size: 16px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-100);
+    margin-bottom: 16px;
+}
+
+.footer__brand p:last-child {
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-100);
+}
+
+/* Títulos de las columnas (Navegación / Contactos) */
+.footer__title {
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-100);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    margin-bottom: 16px;
+}
+
+/* Listas de enlaces */
+.footer__list {
+    list-style: none;
+}
+
+.footer__list li {
+    margin-bottom: 16px;
+}
+
+.footer__list a {
+    font-size: 14px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-100);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estados hover/pressed para todos los links del footer
+   (mapa del sitio + email + LinkedIn + ubicación) */
+.footer a {
+    transition: all 0.2s ease;
+}
+
+.footer a:hover {
+    color: var(--color-primary-300);
+}
+
+.footer a:active {
+    opacity: 0.7;
+    transform: translateY(1px);
+}
+
+/* Parte inferior: Línea y Copyright */
+.footer__bottom {
+    text-align: center;
+}
+
+.footer__line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-text-300);
+    margin-bottom: 32px;
+}
+
+.footer__bottom p {
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-100);
+    opacity: 0.8;
+}
+
+/* Iconos (Si usas una fuente de iconos o SVGs) */
+.footer__list i {
+    font-size: 16px;
+    width: 20px;
+    /* Ancho fijo para alinear el texto de los links */
+    text-align: center;
+}
+
+/* --- Breakpoint Tablet (744px) --- */
+@media (min-width: 744px) {
+
+    .navbar {
+        padding: 48px;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar__back {
+        display: block;
+    }
+
+    /* Intercambiamos los logos */
+    .navbar__logo--full {
+        display: none;
+    }
+
+    .navbar__logo--short {
+        display: block;
+    }
+
+    .navbar__identity {
+        display: flex;
+        justify-content: flex-end; /* Fuerza el contenido a la derecha */
+        flex: 1; /* Hace que el contenedor crezca y ocupe todo el espacio libre */
+        margin-left: 0;
+    }
+
+    /* 2. Aseguramos que el botón de volver no se "coma" el espacio del logo */
+    .navbar__back {
+        flex: 0 0 auto; /* Evita que el botón de volver se encoja o desaparezca */
+    }
+}
+
+/* --- COMPONENTE: FLOATING CONTACT BUTTON (WhatsApp) --- */
+
+.floating-btn {
+    position: fixed;
+    right: 32px;
+    bottom: 64px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    background: linear-gradient(
+        135deg,
+        var(--gradient-success-start),
+        var(--gradient-success-end)
+    );
+    color: var(--color-surface-0);
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--letter-spacing);
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(31, 175, 56, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.floating-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 32px rgba(31, 175, 56, 0.36);
+}
+
+.floating-btn:active {
+    transform: scale(0.98);
+}
+
+.floating-btn:focus-visible {
+    outline: 2px solid var(--color-surface-0);
+    outline-offset: 3px;
+}
+
+.floating-btn__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.floating-btn__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 744px) {
+    .floating-btn {
+        right: 24px;
+        bottom: 28px;
+        padding: 12px 18px;
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .floating-btn__icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 390px) {
+    .floating-btn {
+        right: 16px;
+        bottom: 24px;
+        padding: 12px 16px;
+        font-size: 12px;
+    }
+}
+
+/* --- COMPONENTE: FOOTER (responsive global) ---
+   Estos overrides se movieron desde home.css a componentes.css
+   para que el footer responsive aplique a todas las páginas que
+   carguen el componente, no sólo al Home. */
+
+@media (max-width: 744px) {
+    .footer {
+        padding: 0;
+    }
+
+    .footer__container {
+        padding: 48px;
+    }
+
+    .footer__top {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+    }
+}
+
+@media (max-width: 390px) {
+    .footer__container {
+        padding: 48px 16px;
+    }
+}
+/* === HOME (sections) === */
+/* --- SECCIÓN HERO --- */
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 64px;
+    padding: 80px 80px 176px 80px;
+    isolation: isolate;
+    align-self: stretch;
+    margin: 0 auto;
+    margin-bottom: 176px;
+    /* Gradient dark del sistema sobre la imagen original.
+       blend-mode: multiply oscurece la imagen con el gradient
+       conservando los detalles visibles. */
+    background-image:
+        linear-gradient(
+            105.21deg,
+            var(--color-text-400) 37.45%,
+            var(--color-primary-950) 89.58%
+        ),
+        url('../assets/image/img\ background\ hero.png');
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-blend-mode: multiply;
+    width: 100%;
+    min-height: 561px;
+}
+
+.hero__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 64px;
+    width: 100%;
+}
+
+/* Eyebrow con línea decorativa horizontal (16px) antes del texto */
+.hero__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    color: var(--color-text-50);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+}
+
+.hero__label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    background-color: var(--color-text-50);
+    flex-shrink: 0;
+}
+
+.hero__title {
+    font-size: 56px;
+    font-weight: var(--weight-bold);
+    color: var(--color-text-50);
+    max-width: 900px;
+}
+
+.hero__subtitle {
+    font-size: 18px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-50);
+    max-width: 900px;
+}
+
+.hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    flex-wrap: wrap;
+}
+
+/* Chip con texto en accent yellow (--color-special-badge) */
+.hero__projects {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: var(--weight-medium);
+    color: var(--color-special-badge);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+}
+
+/* CTA del hero — sigue siendo el primary semánticamente (clase
+   .btn--primary intacta en HTML), pero adopta los visuales del
+   secondary: bg primary-50, texto primary-950, sin border.
+   Override scoped — sólo afecta al CTA dentro de .hero. */
+.hero .btn--primary {
+    width: 305px;
+    background: var(--color-primary-50);
+    color: var(--color-primary-950);
+    border: none;
+}
+
+/* --- SECCIÓN: PROYECTOS DESTACADOS --- */
+
+.projects {
+    max-width: 1120px;
+    margin: 0 auto;
+    margin-bottom: 104px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-400);
+    width: 100%;
+}
+
+.section-description {
+    font-size: 18px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-300);
+    width: 100%;
+    margin-bottom: 64px;
+}
+
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(357px, 1fr));
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 64px;
+}
+
+.mobile-only-component {
+    display: none;
+}
+
+
+.projects__footer {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+}
+
+.projects__all-link {
+    font-size: 18px;
+    font-weight: var(--weight-medium);
+    color: var(--color-primary-900);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.projects__all-link:hover {
+    color: var(--color-primary-600);
+    border-bottom: 2px solid var(--color-primary-600);
+    border-color: var(--color-primary-600);
+}
+
+.projects__all-link i {
+    font-size: 18px;
+}
+
+/* --- SECCIÓN: SERVICIOS --- */
+
+.services {
+    max-width: 1120px;
+    margin: 0 auto;
+    margin-top: 176px;
+    margin-bottom: 176px;
+}
+
+.services__grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 48px;
+}
+
+.service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px 24px;
+    justify-self: stretch;
+    border: 1px solid var(--color-border-100);
+    background-color: var(--color-surface-100);
+    box-shadow: 1px 1px 4px 0 rgba(203, 213, 225, 0.60);;
+    border-radius: 8px;
+    max-width: 536px;
+}
+
+/* Placeholder de icono — listo para insertar un SVG (Lucide 24px) */
+.service-item__icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-border-300);
+}
+
+.service-item__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.service-item__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.service-item__title {
+    color: var(--color-text-400);
+    font-size: 18px;
+    font-weight: var(--weight-medium);
+    line-height: var(--line-height-titles);
+    letter-spacing: var(--letter-spacing);
+}
+
+.service-item__text {
+    color: var(--color-text-300);
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    line-height: var(--line-height-body);
+}
+
+/* --- SECCIÓN: SOBRE MÍ --- */
+
+.about {
+    max-width: 1120px;
+    margin: 0 auto;
+    margin-top: 176px;
+    margin-bottom: 176px;
+}
+
+.about__container {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.about_titles-paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 548px;
+}
+
+.about__title {
+    font-size: 36px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-400);
+}
+
+.about_paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.about_paragraph p {
+    font-size: 18px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-300);
+    line-height: var(--line-height-body);
+
+}
+
+.titles-paragraphs__content p strong {
+    color: var(--color-text-400);
+    font-weight: var(--weight-semibold);
+    font-size: 16px;
+}
+
+.about__image {
+    width: 492px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 1px 1px 4px 0 rgba(203, 213, 225, 0.60);
+}
+
+.about__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* --- SECCIÓN: PROCESO DE TRABAJO (timeline cards alternadas) --- */
+
+.process {
+    max-width: 1120px;
+    margin: 0 auto;
+    margin-top: 176px;
+    margin-bottom: 264px;
+}
+
+.process__list {
+    --process-axis-left: 50%;
+    --process-axis-color: var(--color-border-200);
+    --process-node-outer: 22px;
+    --process-node-inner: 14px;
+    --process-card-gap: 60px;
+    --process-connector: 48px;
+    list-style: none;
+    padding: 0;
+    margin: 64px 0 0 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+/* Eje vertical central */
+.process__list::before {
+    content: '';
+    position: absolute;
+    left: var(--process-axis-left);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--process-axis-color);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.process-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+/* Nodo sobre el eje: círculo interno (primary-500) + anillo externo
+   (primary-100) — total 22px, según Figma. Resuelto con un único pseudo
+   y box-shadow expansivo en lugar de dos pseudos. */
+.process-step::before {
+    content: '';
+    position: absolute;
+    left: var(--process-axis-left);
+    top: 50%;
+    width: var(--process-node-inner);
+    height: var(--process-node-inner);
+    border-radius: 50%;
+    background-color: var(--color-primary-500);
+    box-shadow: 0 0 0 4px var(--color-primary-100);
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+/* Card — Figma spec: bg surface-50 #F8FAFC, radius 12, shadow Medium */
+.process-step__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 360px;
+    min-height: 160px;
+    padding: 24px;
+    background-color: var(--color-surface-50);
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px 0 rgba(203, 213, 225, 0.8);
+    z-index: 2;
+}
+
+/* Pasos impares: card a la izquierda del eje */
+.process-step:nth-child(odd) .process-step__card {
+    grid-column: 1;
+    justify-self: end;
+    margin-right: var(--process-card-gap);
+}
+
+/* Pasos pares: card a la derecha del eje */
+.process-step:nth-child(even) .process-step__card {
+    grid-column: 2;
+    justify-self: start;
+    margin-left: var(--process-card-gap);
+}
+
+/* Connector horizontal del card al nodo (48px exacto Figma) */
+.process-step__card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: var(--process-connector);
+    height: 1px;
+    background-color: var(--process-axis-color);
+    transform: translateY(-50%);
+}
+
+.process-step:nth-child(odd) .process-step__card::after {
+    right: calc(var(--process-connector) * -1);
+}
+
+.process-step:nth-child(even) .process-step__card::after {
+    left: calc(var(--process-connector) * -1);
+}
+
+/* Número arriba-derecha. Figma: 18px Bold uppercase + min-width 100% +
+   text-align right. Sin position absolute — fluye como primer hijo flex. */
+.process-step__number {
+    width: 100%;
+    font-size: 18px;
+    font-weight: var(--weight-bold);
+    color: var(--color-text-200);
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    line-height: 1.24;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Wrapper título + descripción — gap 16px (Figma) */
+.process-step__paragraph {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+}
+
+.process-step__title {
+    font-size: 18px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-400);
+    letter-spacing: var(--letter-spacing);
+    line-height: 1.24;
+    white-space: nowrap;
+}
+
+.process-step__text {
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-300);
+    line-height: var(--line-height-body);
+    width: 310px;
+    max-width: 100%;
+}
+
+/* --- SECCIÓN: CTA FINAL --- */
+
+.cta-final {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 104px 0 104px 0;
+    background: linear-gradient(
+        105deg,
+        var(--color-text-400) 37.45%,
+        var(--color-primary-950) 89.58%
+    );
+    border-radius: 24px;
+    box-shadow: 4px 4px 24px 0 rgba(203, 213, 225, 0.80);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 64px;
+    margin-bottom: 128px;
+}
+
+.cta-final__title {
+    font-size: 48px;
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-400);
+    max-width: auto;
+    line-height: var(--line-height-titles);
+}
+
+.cta-final__text {
+    font-size: 20px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-200);
+    max-width: auto;
+    line-height: var(--line-height-body);
+}
+
+/* Overrides scoped: textos y botones sobre el fondo dark del CTA */
+.cta-final .cta-final__title {
+    color: var(--color-text-100);
+}
+
+.cta-final .cta-final__text {
+    color: var(--color-text-100);
+}
+
+.cta-final .btn--secondary {
+    background: var(--color-primary-50);
+    color: var(--color-primary-950);
+}
+
+.cta-final__actions {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    width: 100%;
+}
+
+.cta-final__note {
+    font-size: 16px;
+    font-weight: var(--weight-regular);
+    color: var(--color-text-100);
+    letter-spacing: var(--letter-spacing);
+    opacity: 0.7;
+}
+
+/* --- TABLET BREAKPOINT (Max 744px) --- */
+@media (max-width: 744px) {
+
+    .hero {
+        padding: 80px 48px 128px 48px;
+        gap: 80px;
+    }
+
+    h1,
+    .hero__title {
+        font-size: 40px;
+    }
+
+    .hero__subtitle {
+        font-size: 16px;
+    }
+
+    .hero__actions {
+        display: flex;
+        width: 100%;
+        gap: 64px;
+        box-sizing: border-box;
+    }
+
+    .btn--primary,
+    .btn--secondary {
+        flex: 1;
+    }
+
+    /* En tablet/mobile el width fijo del CTA del hero (305px desktop)
+       pasa a fluido para no desbordar pantallas chicas. */
+    .hero .btn--primary {
+        width: auto;
+    }
+
+    .projects {
+        padding: 0 48px 128px 48px;
+    }
+
+    /* 3. Grid de Proyectos: Mantenemos 2 columnas pero ajustamos el gap */
+    h2 {
+        font-size: 32px;
+    }
+
+    .section-description {
+        font-size: 16px;
+    }
+
+    .projects__grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 40px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .projects__grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .project-card {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+    }
+
+    .mobile-only-component {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 16px;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .mobile-only-component .dot.active {
+        width: 24px;
+        border-radius: 999px;
+        background-color: var(--color-primary-800);
+    }
+
+    .mobile-only-component .dot {
+        width: 10px;
+        height: 10px;
+        background-color: var(--color-primary-100);
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .services {
+        padding: 0 48px 128px 48px;
+    }
+
+    .service-item {
+        max-width: 100%;
+    }
+
+    .about {
+        padding: 0 48px 128px 48px;
+    }
+
+    .about__container {
+        flex-direction: row;
+        gap: 32px;
+    }
+
+    .about_paragraph {
+        font-size: 16px;
+        max-width: 364px;
+    }
+
+    .about__image {
+        width: 252px;
+        height: 252px;
+        object-fit: cover;
+        margin-top: 78px;
+    }
+
+    .about__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .process {
+        padding: 0 48px 128px 48px;
+    }
+
+    /* Tablet — Figma 2615:3205: alternado, card 277px, gap 46/connector 37 */
+    .process__list {
+        --process-card-gap: 46px;
+        --process-connector: 37px;
+    }
+
+    .process-step__card {
+        width: 277px;
+        padding: 24px;
+        min-height: 144px;
+    }
+
+    /* Mantengo tipografía de desktop (18px title + nowrap) — Figma tablet
+       conserva las mismas escalas tipográficas. */
+
+    .cta-final {
+        border-radius: 0;
+        padding: 104px 48px;
+    }
+
+    .cta-final__title {
+        font-size: 32px;
+    }
+
+    .cta-final__text {
+        font-size: 18px;
+    }
+
+    .cta-final__actions {
+        width: 100%;
+        gap: 64px;
+    }
+
+    .cta-final__note {
+        font-size: 14px;
+    }
+
+}
+
+/* --- Breakpoint Premium: 394px a 500px --- 
+   Aquí damos un poco más de aire al diseño, aprovechando
+   que el dispositivo tiene más pantalla. */
+
+@media (min-width: 391px) and (max-width: 500px) {
+
+    .navbar {
+        padding: 48px 24px;
+    }
+
+    .hero__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .hero {
+        padding: 64px 16px 124px 16px;
+    }
+
+    .projects {
+        padding: 40px 16px 176px 16px;
+    }
+
+    .services, .about {
+        padding: 0 16px 176px 16px;
+    }
+
+    .process {
+        padding: 0 16px 40px 16px;
+    }
+
+    /* Mobile — Figma 2618:3453: una columna con eje lateral.
+       Eje en x=11px, indicator 22px sobre el eje, connector 40px,
+       card empieza en x=62 (22+40), padding 16, content compacto. */
+    .process__list {
+        --process-axis-left: 11px;
+        --process-card-gap: 62px;
+        --process-connector: 40px;
+        gap: 48px;
+    }
+
+    .process__list::before {
+        transform: none;
+    }
+
+    /* Grid explícito: col1 reservada para eje + indicator + connector,
+       col2 toma el espacio restante para que la card sea fluid y todas
+       midan exactamente lo mismo. */
+    .process-step {
+        grid-template-columns: var(--process-card-gap) 1fr;
+    }
+
+    /* Todas las cards en col 2, ancho completo de su columna */
+    .process-step:nth-child(odd) .process-step__card,
+    .process-step:nth-child(even) .process-step__card {
+        grid-column: 2;
+        justify-self: stretch;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    /* Connector horizontal a la izquierda del card en todas */
+    .process-step:nth-child(odd) .process-step__card::after,
+    .process-step:nth-child(even) .process-step__card::after {
+        right: auto;
+        left: calc(var(--process-connector) * -1);
+    }
+
+    .process-step__card {
+        padding: 16px;
+        min-height: 150px;
+    }
+
+    /* Número alineado a la izquierda en mobile (Figma) */
+    .process-step__number {
+        text-align: left;
+    }
+
+    .process-step__title {
+        font-size: 16px;
+    }
+
+    .process-step__text {
+        font-size: 12px;
+        width: auto;
+    }
+
+    .cta-final {
+        padding: 104px 16px;
+    }
+
+
+    .hero__title {
+        font-size: 32px;
+    }
+
+    .hero__actions,
+    .cta-final__actions {
+        display: flex;
+        gap: 24px;
+        box-sizing: border-box;
+    }
+
+    .btn--primary,
+    .btn--secondary {
+        width: 100%;
+    }
+
+
+    .section-title {
+        font-size: 32px;
+    }
+
+    .projects__grid {
+        padding-left: 0;
+        padding-right: 0;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .project-card {
+        flex: 0 0 100%;
+    }
+
+    .mobile-only-component {
+        margin-bottom: 40px;
+    }
+
+    .about__container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .about_titles-paragraphs {
+        margin-bottom: 40px;
+    }
+
+    .about__image {
+        margin-top: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .cta-final__title span {
+        display: block;
+    }
+}
+
+
+@media (max-width: 390px) {
+
+    .navbar {
+        padding: 48px 16px;
+    }
+
+    .hero {
+        padding: 64px 16px;
+        gap: 80px;
+        background-position: 86% center;
+        background-repeat: no-repeat;
+    }
+
+    .hero__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .hero__title {
+        font-size: 32px;
+    }
+
+    .hero__actions {
+        gap: 24px;
+    }
+
+    .projects {
+        padding: 40px 16px 176px 16px;
+    }
+
+    .section-divider {
+        margin-bottom: 80px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .projects__grid {
+        padding-left: 0;
+        padding-right: 0;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .project-card {
+        flex: 0 0 100%;
+    }
+
+    .mobile-only-component {
+        margin-bottom: 40px;
+    }
+
+    .projects__footer {
+        margin-top: 0;
+    }
+
+    .projects__all-link {
+        font-size: 16px;
+        gap: 12px;
+    }
+
+    .services {
+        padding: 0 16px 176px 16px;
+    }
+
+    .section-description {
+        margin-bottom: 80px;
+    }
+
+    .service-item {
+        min-height: 142px;
+        overflow: hidden;
+    }
+
+    .service-item__title {
+        font-size: 16px;
+    }
+
+    .service-item__text {
+        font-size: 12px;
+    }
+
+    .about {
+        padding: 0 16px 176px 16px;
+    }
+
+    .about__container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .about_titles-paragraphs {
+        margin-bottom: 40px;
+    }
+
+    .about__image {
+        margin-top: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .process {
+        padding: 0 16px 176px 16px;
+    }
+
+    /* Mobile <=390px — hereda layout del bloque ≤500 (Figma 2618:3453).
+       Solo se compacta el gap vertical para pantallas estrechas. */
+    .process__list {
+        gap: 20px;
+    }
+
+    .cta-final {
+        padding: 48px 16px;
+    }
+
+    .cta-final__title {
+        font-size: 28px;
+    }
+
+    .cta-final__title span {
+        display: block;
+    }
+
+    .cta-final__text {
+        font-size: 16px;
+    }
+
+    .cta-final__text span {
+        display: block;
+    }
+
+    .cta-final__actions {
+        gap: 24px;
+    }
+
+    .cta-final__note {
+        font-size: 12px;
+    }
+
+}
+/* === ANIMATIONS === */
+/* assets/css/transitions.css */
+
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000; 
+    /* Usamos tu variable de fondo para que no se vea transparente */
+    background-color: var(--color-bg, #ffffff); 
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    pointer-events: none; /* Evita clics accidentales mientras anima */
+}
+
+.page-transition--active {
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+/* --- REVEAL ON SCROLL ---
+   Aparición progresiva de secciones al entrar en viewport.
+   La clase .reveal-on-scroll la aplica JavaScript (script.js) sólo
+   a secciones below-the-fold, así no hay flash de contenido oculto
+   en el primer paint y si JS no carga todo se ve normal. */
+
+@media (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Reveal direccional para las cards del timeline (process).
+       Sólo se anima la card; el eje vertical y los nodos quedan
+       anclados (no reciben la clase) para preservar el timeline
+       visible durante toda la navegación. */
+    .process-step__card.reveal-step {
+        opacity: 0;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .process-step__card.reveal-step--left {
+        transform: translateX(-32px);
+    }
+
+    .process-step__card.reveal-step--right {
+        transform: translateX(32px);
+    }
+
+    .process-step__card.reveal-step.is-visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Pulse continuo en cada nodo del timeline.
+       El ::before sigue siendo el nodo principal (sólido, encima);
+       este ::after es el halo expansivo que late detrás. */
+    .process-step::after {
+        content: '';
+        position: absolute;
+        left: var(--process-axis-left);
+        top: 50%;
+        width: var(--process-node-outer);
+        height: var(--process-node-outer);
+        border-radius: 50%;
+        background-color: var(--color-primary-300);
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        pointer-events: none;
+        animation: process-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes process-pulse {
+        0% {
+            opacity: 0.45;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(2.2);
+        }
+    }
+}
+/* === SOLUTIONS V2 (overrides) === */
+/* ============================================================
+   STYLES V2 — Sección "Soluciones digitales"
+   ----------------------------------------------------------------
+   Solo se incluyen los estilos específicos de esta sección.
+   El resto reutiliza el sistema actual (variables, tipografía,
+   spacing, .section-divider, .titles-paragraphs__content,
+   .section-title, .section-description, .divider, .btn--primary).
+   ============================================================ */
+
+/* --- NAVBAR — logo full visible siempre en index-v2 ---
+   Por default el sistema oculta el "Federico Villanueva" en mobile
+   (≤500px) y muestra "FV". En esta página queremos el nombre
+   completo en todos los breakpoints. styles-v2.css carga después
+   de componentes.css → estas reglas ganan en cascada sin !important. */
+.navbar__logo--full {
+    display: block;
+}
+
+.navbar__logo--short {
+    display: none;
+}
+
+.solutions {
+    max-width: 1120px;
+    margin: 0 auto 176px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+/* Mobile: slider horizontal con scroll-snap (mismo patrón que
+   .projects__grid en home.css — reutilizado tal cual). Tablet y
+   desktop vuelven a grid (override en sus media queries). */
+.solutions__grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 32px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.solutions__grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- CARD --- */
+
+.solution-card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-surface-0);
+    border: 1px solid var(--color-border-200);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px 0 rgba(203, 213, 225, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 4px 6px 18px 0 rgba(203, 213, 225, 0.95);
+}
+
+/* Mockup container — preparado para insertar imagen real */
+.solution-card__mockup {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--color-surface-100);
+    border-bottom: 1px solid rgba(25, 55, 70, 0.08);
+}
+
+.solution-card__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.solution-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px 32px;
+    background-color: var(--color-surface-100);
+    flex: 1;
+}
+
+.solution-card__category {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: var(--weight-bold);
+    line-height: 1.24;
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+    color: var(--color-text-300);
+}
+
+.solution-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.solution-card__title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+    line-height: var(--line-height-titles);
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-text-400);
+}
+
+.solution-card__summary {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    line-height: var(--line-height-body);
+    letter-spacing: var(--letter-spacing);
+    color: rgba(11, 18, 32, 0.6);
+}
+
+/* ============================================================
+   RESPONSIVE — sigue las convenciones del sistema actual
+   ============================================================ */
+
+/* Tablet (≥744px) — vuelve a grid 2 columnas */
+@media (min-width: 744px) {
+    .solutions {
+        padding: 0 48px;
+        gap: 80px;
+    }
+
+    .solutions__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+
+    .solution-card {
+        flex: initial;
+        scroll-snap-align: none;
+    }
+
+    .solution-card__title {
+        font-size: 16px;
+    }
+}
+
+/* Desktop (≥1024px) — grid 4 columnas */
+@media (min-width: 1024px) {
+    .solutions {
+        padding: 0;
+    }
+
+    .solutions__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .solution-card__body {
+        padding: 24px 20px;
+    }
+}

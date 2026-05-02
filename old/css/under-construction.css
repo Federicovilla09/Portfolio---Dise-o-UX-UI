@@ -1,0 +1,261 @@
+/* --- PÁGINA: EN CONSTRUCCIÓN --- */
+
+.navbar {
+    padding: 48px 24px;
+}
+
+/* Back link en navbar — oculto por default; visible solo en desktop.
+   En mobile/tablet la página no muestra back en el navbar (Figma). */
+.navbar__back {
+    display: none;
+}
+
+/* Mobile-first base — Figma 2817:3070 (393px) */
+
+.under-construction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    margin-bottom: 64px;
+}
+
+.under-construction__container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+/* Imagen: visible en los 3 breakpoints — Figma mobile 180×120 */
+.under-construction__image {
+    width: 100%;
+    max-width: 180px;
+    margin: 0;
+}
+
+.under-construction__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.under-construction__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+}
+
+.under-construction__title {
+    font-size: 32px;
+    font-weight: var(--weight-bold);
+    line-height: var(--line-height-titles);
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-text-400);
+    max-width: 360px;
+}
+
+.under-construction__text {
+    font-size: 16px;
+    font-weight: var(--weight-regular);
+    line-height: var(--line-height-body);
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-text-300);
+    max-width: 360px;
+}
+
+.under-construction__actions {
+    width: 100%;
+    max-width: 361px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+/* CTA primario — hereda .btn--primary global (font-size 16, weight
+   semibold heredados, sin override). Mobile: 48px, icon 20px. */
+.under-construction__cta {
+    width: 100%;
+    height: 48px;
+    padding: 9px 33px;
+    text-transform: uppercase;
+}
+
+.under-construction__cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.under-construction__cta-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Back link ghost — visible en mobile y tablet, oculto en desktop */
+.under-construction__back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 48px;
+    padding: 8px 32px;
+    font-size: 18px;
+    font-weight: var(--weight-medium);
+    line-height: 1.24;
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+    color: var(--color-text-400);
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    transition: opacity 0.2s ease;
+}
+
+.under-construction__back:hover {
+    opacity: 0.7;
+}
+
+.under-construction__back svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+/* --- TABLET (≥744px) — Figma 2817:3800 --- */
+@media (min-width: 744px) {
+    .under-construction {
+        padding: 96px 48px;
+    }
+
+    .under-construction__container {
+        max-width: 720px;
+        gap: 64px;
+    }
+
+    /* Imagen 480×320 — centrada (al final del flex column) */
+    .under-construction__image {
+        max-width: 480px;
+        order: 3;
+    }
+
+    .under-construction__content {
+        order: 1;
+        gap: 32px;
+    }
+
+    .under-construction__actions {
+        order: 2;
+        max-width: 420px;
+        gap: 24px;
+        margin-top: 0;
+    }
+
+    .under-construction__title {
+        font-size: 56px;
+        max-width: 720px;
+    }
+
+    .under-construction__text {
+        font-size: 20px;
+        max-width: 640px;
+    }
+
+    /* Botones más grandes — 56px height + icon 24 según Figma tablet */
+    .under-construction__cta {
+        height: 56px;
+        padding: 17px 33px;
+    }
+
+    .under-construction__cta-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .under-construction__back {
+        height: 56px;
+        padding: 16px 32px;
+    }
+
+    .under-construction__back svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* --- DESKTOP (≥1024px) — Figma 2817:3829 ---
+   Layout horizontal: texto + botón a la izquierda, imagen a la derecha.
+   El back link "Volver al inicio" se oculta; el back vive en el navbar. */
+@media (min-width: 1024px) {
+    /* Back link en el navbar visible sólo en desktop */
+    .navbar__back {
+        display: block;
+    }
+
+    /* En desktop el subtítulo fluye sin saltos forzados — el <br>
+       sólo aplica en mobile/tablet donde se necesita para preservar
+       la composición vertical del Figma. */
+    .under-construction__text br {
+        display: none;
+    }
+
+    .under-construction {
+        padding: 96px 80px 128px;
+    }
+
+    .under-construction__container {
+        max-width: 1120px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "content image"
+            "actions image";
+        column-gap: 48px;
+        row-gap: 32px;
+        align-items: center;
+    }
+
+    .under-construction__content {
+        grid-area: content;
+        align-items: flex-start;
+        text-align: left;
+        gap: 32px;
+    }
+
+    .under-construction__title {
+        max-width: 647px;
+    }
+
+    .under-construction__text {
+        max-width: 647px;
+    }
+
+    .under-construction__actions {
+        grid-area: actions;
+        max-width: 381px;
+        margin-top: 0;
+    }
+
+    /* En desktop el back link "Volver al inicio" se oculta — el regreso
+       al home queda a cargo del navbar (logo "Federico Villanueva"). */
+    .under-construction__back {
+        display: none;
+    }
+
+    .under-construction__image {
+        grid-area: image;
+        max-width: 453px;
+        justify-self: center;
+        align-self: center;
+    }
+}

@@ -1,0 +1,172 @@
+/* ============================================================
+   STYLES V2 — Sección "Soluciones digitales"
+   ----------------------------------------------------------------
+   Solo se incluyen los estilos específicos de esta sección.
+   El resto reutiliza el sistema actual (variables, tipografía,
+   spacing, .section-divider, .titles-paragraphs__content,
+   .section-title, .section-description, .divider, .btn--primary).
+   ============================================================ */
+
+/* --- NAVBAR — logo full visible siempre en index-v2 ---
+   Por default el sistema oculta el "Federico Villanueva" en mobile
+   (≤500px) y muestra "FV". En esta página queremos el nombre
+   completo en todos los breakpoints. styles-v2.css carga después
+   de componentes.css → estas reglas ganan en cascada sin !important. */
+.navbar__logo--full {
+    display: block;
+}
+
+.navbar__logo--short {
+    display: none;
+}
+
+.solutions {
+    max-width: 1120px;
+    margin: 0 auto 176px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+/* Mobile: slider horizontal con scroll-snap (mismo patrón que
+   .projects__grid en home.css — reutilizado tal cual). Tablet y
+   desktop vuelven a grid (override en sus media queries). */
+.solutions__grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 32px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.solutions__grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- CARD --- */
+
+.solution-card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-surface-0);
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px 0 rgba(203, 213, 225, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 4px 6px 18px 0 rgba(203, 213, 225, 0.95);
+}
+
+/* Mockup container — preparado para insertar imagen real */
+.solution-card__mockup {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--color-surface-100);
+    border-bottom: 1px solid rgba(25, 55, 70, 0.08);
+}
+
+.solution-card__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.solution-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px 32px;
+    background-color: var(--color-surface-100);
+    flex: 1;
+}
+
+.solution-card__category {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: var(--weight-bold);
+    line-height: 1.24;
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+    color: var(--color-text-300);
+}
+
+.solution-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.solution-card__title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: var(--weight-semibold);
+    line-height: var(--line-height-titles);
+    letter-spacing: var(--letter-spacing);
+    color: var(--color-text-400);
+}
+
+.solution-card__summary {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: var(--weight-regular);
+    line-height: var(--line-height-body);
+    letter-spacing: var(--letter-spacing);
+    color: rgba(11, 18, 32, 0.6);
+}
+
+/* ============================================================
+   RESPONSIVE — sigue las convenciones del sistema actual
+   ============================================================ */
+
+/* Tablet (≥744px) — vuelve a grid 2 columnas */
+@media (min-width: 744px) {
+    .solutions {
+        padding: 0 48px;
+        gap: 80px;
+    }
+
+    .solutions__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+
+    .solution-card {
+        flex: initial;
+        scroll-snap-align: none;
+    }
+
+    .solution-card__title {
+        font-size: 16px;
+    }
+}
+
+/* Desktop (≥1024px) — grid 4 columnas */
+@media (min-width: 1024px) {
+    .solutions {
+        padding: 0;
+    }
+
+    .solutions__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .solution-card__body {
+        padding: 24px 20px;
+    }
+}
