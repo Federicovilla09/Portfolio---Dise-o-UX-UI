@@ -1690,12 +1690,6 @@ img, video {
         padding: 0 16px 176px 16px;
     }
 
-    /* Mobile <=390px — hereda layout del bloque ≤500 (Figma 2618:3453).
-       Solo se compacta el gap vertical para pantallas estrechas. */
-    .process__list {
-        gap: 20px;
-    }
-
     .cta-final {
         padding: 48px 16px;
     }
