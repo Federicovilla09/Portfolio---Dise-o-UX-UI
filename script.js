@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (prefersReducedMotion) return;
 
     const targets = document.querySelectorAll(
-        '.projects, .services, .about, .cta-final, .footer, ' +
+        '.projects, .services, .about, .cta-final, ' +
         '.projects-archive, .projects-grid-section, .proyectos-extend, ' +
         '.project-header, .project-visuals, .project-case, .project-schedule, ' +
         '.feedback-link, .cta-project, ' +
