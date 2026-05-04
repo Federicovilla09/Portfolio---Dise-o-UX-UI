@@ -815,18 +815,6 @@ a {
     flex-wrap: wrap;
 }
 
-/* Chip con texto en accent yellow (--color-special-badge) */
-.hero__projects {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 6px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: var(--weight-medium);
-    color: var(--color-special-badge);
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing);
-}
 
 /* CTA del hero — sigue siendo el primary semánticamente (clase
    .btn--primary intacta en HTML), pero adopta los visuales del
