@@ -120,6 +120,26 @@ p {
 a {
     text-decoration: none;
 }
+
+/* === MOBILE SAFETY ===
+   Previene scroll horizontal global y asegura que las imágenes
+   nunca desborden su contenedor. Defensa contra elementos con
+   width fijo o min-width mayor al viewport en pantallas chicas. */
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
 /* === COMPONENTES === */
 /* --- COMPONENTE: NAVBAR --- */
 
@@ -1416,7 +1436,7 @@ a {
    Aquí damos un poco más de aire al diseño, aprovechando
    que el dispositivo tiene más pantalla. */
 
-@media (min-width: 391px) and (max-width: 500px) {
+@media (max-width: 500px) {
 
     .navbar {
         padding: 48px 24px;
